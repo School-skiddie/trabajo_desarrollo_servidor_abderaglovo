@@ -4,7 +4,7 @@ from os import path
 
 debug = True # activar el debug mode, para saber que esta haciendo
 
-usuarios_json_file = "C:\\Users\\usuario\\Desktop\\restaurante\\base_de_datos\\usuarios.json" # fichero json relativa
+usuarios_json_file = "C:\\Users\\usuario\\Desktop\\trabajo_abderaglovo\\base_de_datos\\usuarios.json" # fichero json relativa
 
 # Añadir los datos de los usuarios al json
 def añadir_datos(datos):
