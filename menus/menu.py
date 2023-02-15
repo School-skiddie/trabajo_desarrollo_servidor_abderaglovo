@@ -1,6 +1,7 @@
 import clases.cliente
 import base_de_datos.database
-import json
+import funciones.funciones
+import getpass
 
 guardar_clase=None
 
@@ -22,9 +23,20 @@ def menu_principal():
             elif(seleccion_1 == 2):
                 # ------------------------------------------------ INPUTS
                 usuario = input("Escriba el nombre de usuario: ")
-                password = input("Escriba la contraseña: ")
-                telefono = input("Escriba su teléfono: ")
-                correo = input("Escriba su correo eléctronico: ")
+                password = getpass.getpass("Escriba la contraseña: ")
+                while True:
+                    try:
+                        telefono = int(input("Escriba su teléfono: "))
+                        break
+                    except ValueError:
+                        print("\n(Incorrecto) Escriba otra vez el número")
+
+                while True:
+                    correo = input("Escriba su correo eléctronico: ")
+                    if(funciones.funciones.email_es_valido(correo)):
+                        break
+                    else:
+                        print("\n(Incorrecto) El e-mail no es valido, escribalo de nuevo")
 
                 # ------------------------------------------------ COMPROBACIONES
                 if(base_de_datos.database.existe_usuario(usuario, telefono, correo)):
@@ -52,7 +64,7 @@ def menu_principal():
                 codigo = input("\nIntroduce el código identificador del restaurante: ")
             elif(seleccion == 2):
                 usuario = input("\nIntroduce su usuario: ")
-                password = input("\nIntroduce su contraseña: ")
+                password = getpass.getpass("\nIntroduce la contraseña: ")
 
                 # ------------------------------------------------ COMPROBACIONES
                 if(base_de_datos.database.comprobacion_usuario_sesion(usuario, password)):

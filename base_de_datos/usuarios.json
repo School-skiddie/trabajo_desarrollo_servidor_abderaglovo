@@ -1,8 +1,20 @@
 {
+    "Alejandro": {
+        "correo": "themachinehack@gmail.com",
+        "password": "Perceval2002",
+        "saldo": 1000,
+        "telefono": 630909633
+    },
+    "Alejandro2002": {
+        "correo": "themachinehackkk@gmail.com",
+        "password": "Perceval2002",
+        "saldo": 1000,
+        "telefono": 630909634
+    },
     "hola": {
         "correo": "hola",
         "password": "hola",
         "saldo": 1000,
-        "telefono": "hola"
+        "telefono": 630909633
     }
 }
