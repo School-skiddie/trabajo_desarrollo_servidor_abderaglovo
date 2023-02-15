@@ -1,7 +1,4 @@
-import clases.cliente
-import base_de_datos.database
-import funciones.funciones
-import getpass
+import clases.cliente, base_de_datos.database, funciones.funciones, getpass
 
 guardar_clase=None
 
@@ -60,6 +57,8 @@ def menu_principal():
                     base_de_datos.database.añadir_datos(clases.cliente.clientes_lista) # añadimos los nuevos valores al json
             
                     print("\n¡Se ha añadido a la base de datos correctamente!, ahora podra iniciar sesión\n")
+                    funciones.funciones.pausa()
+                    funciones.funciones.borrar_pantalla()
         elif(seleccion == 2):
             print("1 - Iniciar sesión gerente")
             print("2 - Iniciar sesión como usuario")
@@ -110,7 +109,8 @@ def menu_usuario(usuario):
         elif(seleccion == 4):
             pass
 
-        pausa()
+        funciones.funciones.pausa()
+        funciones.funciones.borrar_pantalla()
          # BLA BLA BLA BLA
 #---------------------------------------------------------------
 
@@ -133,7 +133,3 @@ def menu_restaurante():
             pass
 
 #---------------------------------------------------------------
-
-#---------------------------------------------------------------
-def pausa():
-    input("\nPresiona enter tecla para continuar...")
