@@ -4,6 +4,7 @@ from clases import restaurante
 
 clientes_clase = []
 clientes_lista = {}
+historial_clientes = {}
 
 class Cliente:
     def __init__(self, nombre, password, correo, telefono, dinero = 1000):
@@ -38,5 +39,13 @@ class Cliente:
     def modificar_saldo(self):
         pass
 
-    def consultar_saldo(self):
-        return self.dinero
+# Obtener saldo
+def saldo(usuario):
+    for i in clientes_clase:
+        if(usuario == i.nombre):
+            return i.dinero
+
+# Obtener historial de compras
+def historial(usuario):
+    for historial in historial_clientes.get(usuario):
+        print (historial)

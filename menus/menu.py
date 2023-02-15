@@ -16,7 +16,12 @@ def menu_principal():
         if(seleccion == 1):
             print("1 - Dar de alta como gerente")
             print("2 - Dar de alta como usuario")
-            seleccion_1 = int(input(">"))
+            while True:
+                try:
+                    seleccion_1 = int(input(">"))
+                    break
+                except ValueError:
+                    print("Opcion desconocida..., por favor inserte otra vez su seleccion")
 
             if(seleccion_1 == 1):
                 nombre = input("Escribe el nombre del restaurante: ")
@@ -58,7 +63,12 @@ def menu_principal():
         elif(seleccion == 2):
             print("1 - Iniciar sesión gerente")
             print("2 - Iniciar sesión como usuario")
-            seleccion = int(input(">"))
+            while True:
+                try:
+                    seleccion = int(input(">"))
+                    break
+                except ValueError:
+                    print("Opcion desconocida..., por favor inserte otra vez su seleccion")
 
             if(seleccion == 1):
                 codigo = input("\nIntroduce el código identificador del restaurante: ")
@@ -82,19 +92,25 @@ def menu_principal():
 def menu_usuario(usuario):
     while True:
         print("1 - Hacer un pedido")
-        print(f"2 - Añadir credito a la cuenta [Credito Actual: {base_de_datos.database.saldo(usuario)}]")
-        #print(clases.cliente.Cliente().saldo)
+        print(f"2 - Añadir credito a la cuenta [Credito Actual: {clases.cliente.saldo(usuario)}]")
         print("3 - Historial de pedidos")
-        seleccion = input(">")
+        while True:
+            try:
+                seleccion = int(input(">"))
+                break
+            except ValueError:
+                print("Opcion desconocida..., por favor inserte otra vez su seleccion")
 
         if(seleccion == 1):
             pass
         elif(seleccion == 2):
             pass
         elif(seleccion == 3):
-            pass
+            clases.cliente.historial(usuario)
         elif(seleccion == 4):
             pass
+
+        pausa()
          # BLA BLA BLA BLA
 #---------------------------------------------------------------
 
@@ -117,3 +133,7 @@ def menu_restaurante():
             pass
 
 #---------------------------------------------------------------
+
+#---------------------------------------------------------------
+def pausa():
+    input("\nPresiona enter tecla para continuar...")

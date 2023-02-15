@@ -4,7 +4,8 @@ from os import path
 
 debug = True # activar el debug mode, para saber que esta haciendo
 
-usuarios_json_file = "C:\\Users\\usuario\\Desktop\\abderaglovo\\trabajo_daw_abderaglovo\\base_de_datos\\usuarios.json" # fichero json relativa
+usuarios_json_file = "C:\\Users\\usuario\\Desktop\\abderaglovo\\trabajo_daw_abderaglovo\\json\\usuarios.json" # fichero json relativa
+usuarios_historial = "C:\\Users\\usuario\\Desktop\\abderaglovo\\trabajo_daw_abderaglovo\\json\\historial.json" # fichero json relativa
 
 # Añadir los datos de los usuarios al json
 def añadir_datos(datos):
@@ -34,8 +35,21 @@ def cargar_usuarios():
         print("\n[CARGA DE DATOS LISTA]: ",clases.cliente.clientes_lista,"\n") # pruebas debug
         print("\n[CARGA DE DATOS CLASE]: ",clases.cliente.clientes_clase,"\n") # pruebas debug
 
-# Comprobacion de que el usuario existe,correo,telefono
+# HISTORIAL usuarios carga
+def cargar_historial_usuarios():
+    # Comprobamos si existe
+    if path.isfile(usuarios_historial) is False:
+        raise Exception("El archivo 'historial.json', no se ha encontrado, error...")
+    
+    with open(usuarios_historial, "rb") as fp:
+        datos = dict(json.load(fp))
 
+    clases.cliente.historial_clientes.update(datos) # esto para la lista, hacemos un update para añadir los nuevos valores
+    
+    if(debug):    
+        print("\n[CARGA DE DATOS HISTORIAL]: ",clases.cliente.historial_clientes,"\n") # pruebas debug
+
+# Comprobacion de que el usuario existe,correo,telefono
 def comprobacion_usuario_sesion(usuario, password):
     for i in clases.cliente.clientes_clase:
         if(usuario == i.nombre and password == i.password):
@@ -44,16 +58,9 @@ def comprobacion_usuario_sesion(usuario, password):
             return True
 
 # Comprobacion de que el usuario existe para no añadir los datos
-
 def existe_usuario(usuario, telefono, correo):
     for i in clases.cliente.clientes_clase:
         if(usuario == i.nombre or telefono == i.telefono or correo == i.correo):
             if(debug):
                 print("\n[BASE DE DATOS CLASES]: el usuario existe\n")
             return True
-
-# Obtener saldo
-def saldo(usuario):
-    for i in clases.cliente.clientes_clase:
-        if(usuario == i.nombre):
-            return i.dinero
