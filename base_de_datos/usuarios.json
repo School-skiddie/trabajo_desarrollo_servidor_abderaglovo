@@ -1,22 +1,8 @@
 {
-    "2dfdsfds": [
-        "fsdf",
-        "sdfdsf",
-        "sdfsd"
-    ],
-    "Alex": [
-        "Perce2002",
-        "630909633",
-        "themachinehack@gmail.com"
-    ],
-    "asdasdsa": [
-        "dsadas",
-        "dsadsa",
-        "dsadas"
-    ],
-    "asdsad": [
-        "asdas",
-        "dsadsa",
-        "sad"
-    ]
+    "hola": {
+        "correo": "hola",
+        "password": "hola",
+        "saldo": 1000,
+        "telefono": "hola"
+    }
 }

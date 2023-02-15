@@ -4,7 +4,7 @@ from os import path
 
 debug = True # activar el debug mode, para saber que esta haciendo
 
-usuarios_json_file = "C:\\Users\\usuario\\Desktop\\trabajo_abderaglovo\\base_de_datos\\usuarios.json" # fichero json relativa
+usuarios_json_file = "C:\\Users\\usuario\\Desktop\\abderaglovo\\trabajo_daw_abderaglovo\\base_de_datos\\usuarios.json" # fichero json relativa
 
 # Añadir los datos de los usuarios al json
 def añadir_datos(datos):
@@ -25,9 +25,9 @@ def cargar_usuarios():
 
     for carga in clases.cliente.clientes_lista.keys(): # mostramos todas las keys, y añadimos esto a la clase
         if(debug):
-            print("\n[CARGA DE DATOS A LA CLASE]: ", carga, clases.cliente.clientes_lista[carga][0], clases.cliente.clientes_lista[carga][1], clases.cliente.clientes_lista[carga][2], "\n")
+            print("\n[CARGA DE DATOS A LA CLASE]: ", carga, clases.cliente.clientes_lista[carga]['password'], clases.cliente.clientes_lista[carga]['telefono'], clases.cliente.clientes_lista[carga]['correo'], clases.cliente.clientes_lista[carga]['saldo'], "\n")
         
-        registrar = clases.cliente.Cliente(carga, clases.cliente.clientes_lista[carga][0], clases.cliente.clientes_lista[carga][1], clases.cliente.clientes_lista[carga][2])
+        registrar = clases.cliente.Cliente(carga, clases.cliente.clientes_lista[carga]['password'], clases.cliente.clientes_lista[carga]['telefono'], clases.cliente.clientes_lista[carga]['correo'], clases.cliente.clientes_lista[carga]['saldo'])
         clases.cliente.clientes_clase.append(registrar)
     
     if(debug):    
@@ -51,3 +51,9 @@ def existe_usuario(usuario, telefono, correo):
             if(debug):
                 print("\n[BASE DE DATOS CLASES]: el usuario existe\n")
             return True
+
+# Obtener saldo
+def saldo(usuario):
+    for i in clases.cliente.clientes_clase:
+        if(usuario == i.nombre):
+            return i.dinero

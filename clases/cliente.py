@@ -34,3 +34,9 @@ class Cliente:
 
     def recibir_pedido(self, entrega):
         pass
+
+    def modificar_saldo(self):
+        pass
+
+    def consultar_saldo(self):
+        return self.dinero

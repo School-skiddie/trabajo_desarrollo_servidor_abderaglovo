@@ -1,6 +1,9 @@
 import clases.cliente
 import base_de_datos.database
 import json
+
+guardar_clase=None
+
 #---------------------------------------------------------------
 def menu_principal():
     while True:
@@ -29,8 +32,9 @@ def menu_principal():
                 else:
                     # registra el nuevo usuario a la lista
                     registrar = clases.cliente.Cliente(usuario, password, telefono, correo)
+                    
+                    clases.cliente.clientes_lista[usuario] = { "password": password, "telefono": telefono, "correo": correo, "saldo": 1000 } # esto para el dictionario
 
-                    clases.cliente.clientes_lista[usuario] = password, telefono, correo # esto para el dictionario
                     clases.cliente.clientes_clase.append(registrar) # registramos los nuevos valores a la clase
 
                     if(base_de_datos.database.debug):
@@ -53,7 +57,7 @@ def menu_principal():
                 # ------------------------------------------------ COMPROBACIONES
                 if(base_de_datos.database.comprobacion_usuario_sesion(usuario, password)):
                     print("\nHas iniciado sesion\n")
-                    menu_usuario()
+                    menu_usuario(usuario)
                 else:
                     print("\nDatos incorrectos, intentelo de nuevo\n")
         elif(seleccion == 3):
@@ -63,10 +67,11 @@ def menu_principal():
 #---------------------------------------------------------------
 
 #---------------------------------------------------------------
-def menu_usuario():
+def menu_usuario(usuario):
     while True:
         print("1 - Hacer un pedido")
-        print("2 - Añadir credito a la cuenta [Credito Actual: {}]")
+        print(f"2 - Añadir credito a la cuenta [Credito Actual: {base_de_datos.database.saldo(usuario)}]")
+        #print(clases.cliente.Cliente().saldo)
         print("3 - Historial de pedidos")
         seleccion = input(">")
 
