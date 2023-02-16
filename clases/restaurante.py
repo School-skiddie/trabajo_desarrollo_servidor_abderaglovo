@@ -2,10 +2,14 @@ restaurantes_clase = []
 restaurantes_lista = {}
 
 class Restaurante:
-    def __init__(self, nombre, reputacion = 0):
+    def __init__(self, nombre, password, comidas, bebidas, postres, cocineros, reputacion = 0):
         self.nombre = nombre
+        self.password = password
+        self.comidas = comidas
+        self.bebidas = bebidas
+        self.postres = postres
+        self.cocineros = cocineros
         self.reputacion = reputacion
-        self.cocineros = []
 
     def __str__(self):
         return 'nombre:{} reputacion:{}'.format(self.nombre,self.reputacion)
