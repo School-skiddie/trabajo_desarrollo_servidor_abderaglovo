@@ -1,7 +1,5 @@
 import clases.cliente, base_de_datos.database, funciones.funciones, getpass
 
-guardar_clase=None
-
 #---------------------------------------------------------------
 def menu_principal():
     while True:
@@ -103,11 +101,20 @@ def menu_usuario(usuario):
         if(seleccion == 1):
             pass
         elif(seleccion == 2):
-            pass
+            while True:
+                cantidad = float(input("Inserte la cantidad, minimo 5.00 €: "))
+                if(cantidad < 5.00):
+                    print("(Error) El minimo de cantidad a ingresar es de 5.00 €")
+                else:
+                    break
+            
+            print("\nNumero de la tarjeta de credito 4XXXXXXXX......: ")
+            print("\nFecha caducidad X/XX: ")
+            print("\nCCV de la tarjeta de credito XXX: ")
+            clases.cliente.ingreso(usuario, cantidad)
+            print(f"\n[+] Se ha hecho un ingreso de {cantidad} a su cuenta.")
         elif(seleccion == 3):
             clases.cliente.historial(usuario)
-        elif(seleccion == 4):
-            pass
 
         funciones.funciones.pausa()
         funciones.funciones.borrar_pantalla()

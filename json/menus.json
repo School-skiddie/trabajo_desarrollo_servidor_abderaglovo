@@ -17,6 +17,9 @@
             {"nombre": "frutillas c/crema", "precio": 200,"tipo":"postre"},
             {"nombre": "flan", "precio":80,"tipo":"postre"},
             {"nombre": "lemon pie", "precio":80,"tipo":"postre"}
-        ]   
+        ],
+        "cocineros":[
+            {"nombre":"Alejandro Guateque", "experiencia": "2 años", "energia": 100}
+        ]      
     }
 }

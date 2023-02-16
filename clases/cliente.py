@@ -1,13 +1,13 @@
 from random import randint
 from clases import menu
 from clases import restaurante
-
+import base_de_datos.database
 clientes_clase = []
 clientes_lista = {}
 historial_clientes = {}
 
 class Cliente:
-    def __init__(self, nombre, password, correo, telefono, dinero = 1000):
+    def __init__(self, nombre, password, correo, telefono, dinero = 1000.0):
         self.nombre = nombre
         self.password = password
         self.correo = correo
@@ -49,3 +49,11 @@ def saldo(usuario):
 def historial(usuario):
     for historial in historial_clientes.get(usuario):
         print (historial)
+
+# Ingresar dinero
+def ingreso(usuario, ingreso):
+    for i in clientes_clase:
+        if(usuario == i.nombre):
+            i.dinero += ingreso
+            clientes_lista[usuario]["saldo"] = clientes_lista[usuario]["saldo"]+ingreso
+            base_de_datos.database.añadir_datos(clientes_lista)

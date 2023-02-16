@@ -1,3 +1,6 @@
+restaurantes_clase = []
+restaurantes_lista = {}
+
 class Restaurante:
     def __init__(self, nombre, reputacion = 0):
         self.nombre = nombre
