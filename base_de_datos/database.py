@@ -5,6 +5,8 @@ from os import path
 debug = True # activar el debug mode, para saber que esta haciendo
 
 restaurantes_json_file = "C:\\Users\\usuario\\Desktop\\abderaglovo\\trabajo_daw_abderaglovo\\json\\restaurantes.json" # fichero json relativa
+usuarios_json_file = "C:\\Users\\usuario\\Desktop\\abderaglovo\\trabajo_daw_abderaglovo\\json\\usuarios.json" # fichero json relativa
+usuarios_historial = "C:\\Users\\usuario\\Desktop\\abderaglovo\\trabajo_daw_abderaglovo\\json\\historial.json" # fichero json relativa
 
 class Gerentes():
     # Añadir los datos de los usuarios al json
@@ -42,7 +44,7 @@ class Gerentes():
             print("\n[CARGA DE DATOS LISTA (RESTAURANTES)]: ",clases.restaurante.restaurantes_lista,"\n") # pruebas debug
             print("\n[CARGA DE DATOS CLASE (RESTAURANTES)]: ",clases.restaurante.restaurantes_clase,"\n") # pruebas debug
 
-    # Comprobacion de que el usuario existe,correo,telefono
+    # Comprobacion de que el usuario existe,nombre
     def comprobacion_gerente_sesion(restaurante, password):
         for i in clases.cliente.restaurante.restaurantes_clase:
             if(restaurante == i.nombre and password == i.password):
@@ -50,17 +52,13 @@ class Gerentes():
                     print("\n[COMPROBACION DE DATOS (RESTAURANTES)]: datos_correctos = True\n")
                 return True
 
-    # Comprobacion de que el usuario existe para no añadir los datos
+    # Comprobacion de que el restaurante existe para no añadir los datos
     def existe_restaurante(nombre):
         for i in clases.restaurante.restaurantes_clase:
             if(nombre == i.nombre):
                 if(debug):
                     print("\n[BASE DE DATOS CLASES (RESTAURANTES)]: el restaurante existe\n")
                 return True
-
-usuarios_json_file = "C:\\Users\\usuario\\Desktop\\abderaglovo\\trabajo_daw_abderaglovo\\json\\usuarios.json" # fichero json relativa
-usuarios_historial = "C:\\Users\\usuario\\Desktop\\abderaglovo\\trabajo_daw_abderaglovo\\json\\historial.json" # fichero json relativa
-
 class Usuarios():
     # Añadir los datos de los usuarios al json
     def añadir_datos(datos):
