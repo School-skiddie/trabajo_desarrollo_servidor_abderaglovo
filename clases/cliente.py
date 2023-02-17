@@ -2,6 +2,7 @@ from random import randint
 from clases import menu
 from clases import restaurante
 import base_de_datos.database
+
 clientes_clase = []
 clientes_lista = {}
 historial_clientes = {}

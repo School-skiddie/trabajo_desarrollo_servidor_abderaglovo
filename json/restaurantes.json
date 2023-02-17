@@ -1,6 +1,5 @@
 {
     "Mohoso": {
-        "password": "Perce2002",
         "comidas": [
             {"nombre":"pollo al horno", "precio": 250, "tipo":"comida"},
             {"nombre":"milanesa con fritas", "precio": 350, "tipo":"comida"},
@@ -22,6 +21,7 @@
         "cocineros":[
             {"nombre":"Alejandro Guateque", "experiencia": "2 años", "energia": 100}
         ], 
-        "reputacion": 0     
+        "reputacion": 0,
+        "password": "Perce2002"
     }
 }

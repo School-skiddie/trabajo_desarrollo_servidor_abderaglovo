@@ -1,5 +1,4 @@
-import clases.cliente, clases.restaurante
-import json
+import clases.cliente, clases.restaurante, json
 from os import path
 
 debug = True # activar el debug mode, para saber que esta haciendo
