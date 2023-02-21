@@ -39,6 +39,14 @@ class Restaurante:
         for historial in historial_restaurantes.get(nombre):
             print (f"{contador} - {historial}")
             contador=contador+1
+    
+    # Obtener menu del restaurante
+    def menu(categoria, nombre):
+        contador=0
+        for menu in restaurantes_lista[nombre][categoria]:
+            print(f"{contador} - {menu['nombre']} - Precio: {menu['precio']} €")
+            contador=contador+1
+
 
 
 

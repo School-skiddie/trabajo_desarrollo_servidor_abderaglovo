@@ -9,6 +9,7 @@ def menu_principal():
         seleccion = int(input(">"))
 
         if(seleccion == 1):
+            funciones.funciones.borrar_pantalla()
             print("1 - Dar de alta como gerente")
             print("2 - Dar de alta como usuario")
             while True:
@@ -19,6 +20,7 @@ def menu_principal():
                     print("Opcion desconocida..., por favor inserte otra vez su seleccion")
 
             if(seleccion_1 == 1):
+                funciones.funciones.borrar_pantalla()
                 # ------------------------------------------------ INPUTS
                 nombre = input("Escriba el nombre del restaurante: ")
                 password = getpass.getpass("Escriba la contraseña: ")
@@ -43,6 +45,7 @@ def menu_principal():
                     funciones.funciones.pausa()
                     funciones.funciones.borrar_pantalla()
             elif(seleccion_1 == 2):
+                funciones.funciones.borrar_pantalla()
                 # ------------------------------------------------ INPUTS
                 usuario = input("Escriba el nombre de usuario: ")
                 password = getpass.getpass("Escriba la contraseña: ")
@@ -80,6 +83,7 @@ def menu_principal():
                     funciones.funciones.pausa()
                     funciones.funciones.borrar_pantalla()
         elif(seleccion == 2):
+            funciones.funciones.borrar_pantalla()
             print("1 - Iniciar sesión gerente")
             print("2 - Iniciar sesión como usuario")
             while True:
@@ -95,6 +99,7 @@ def menu_principal():
 
                 # ------------------------------------------------ COMPROBACIONES
                 if(base_de_datos.database.Gerentes.comprobacion_gerente_sesion(nombre, password)):
+                    funciones.funciones.borrar_pantalla()
                     print(f"\nHas iniciado sesion como gerente de {nombre}\n")
                     menu_restaurante(nombre)
                 else:
@@ -105,6 +110,7 @@ def menu_principal():
 
                 # ------------------------------------------------ COMPROBACIONES
                 if(base_de_datos.database.Usuarios.comprobacion_usuario_sesion(usuario, password)):
+                    funciones.funciones.borrar_pantalla()
                     print(f"\nHas iniciado sesion como {usuario}\n")
                     menu_usuario(usuario)
                 else:
@@ -129,7 +135,31 @@ def menu_usuario(usuario):
                 print("Opcion desconocida..., por favor inserte otra vez su seleccion")
 
         if(seleccion == 1):
+            funciones.funciones.borrar_pantalla()
             base_de_datos.database.Gerentes.restaurantes()
+            nombre = input("\n[+] Escriba el nombre del restaurante: ")
+            while True:
+                funciones.funciones.borrar_pantalla()
+                try:
+                    print("1 - Comidas")
+                    print("2 - Bebidas")
+                    print("3 - Postres")
+                    seleccion = int(input(">"))
+                    if(seleccion == 1):
+                        clases.restaurante.Restaurante.menu("comidas", nombre)
+                        pedido = input("\n[+] Escriba el nombre de la comida: ")
+                        clases.cliente.Cliente.pedido_añadir(nombre, pedido, "comidas")
+                    elif(seleccion == 2):
+                        clases.restaurante.Restaurante.menu("bebidas", nombre)
+                        pedido = input("\n[+] Escriba el nombre de la bebida: ")
+                        clases.cliente.Cliente.pedido_añadir(nombre, pedido, "bebidas")
+                    elif(seleccion == 3):
+                        clases.restaurante.Restaurante.menu("postres", nombre)
+                        pedido = input("\n[+] Escriba el nombre del postre: ")
+                        clases.cliente.Cliente.pedido_añadir(nombre, pedido, "postres")
+                except KeyError:
+                    print("[-] El restaurante insertado no existe...")
+
         elif(seleccion == 2):
             while True:
                 cantidad = float(input("Inserte la cantidad, minimo 5.00 €: "))

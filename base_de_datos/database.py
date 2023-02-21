@@ -1,7 +1,7 @@
 import clases.cliente, clases.restaurante, json
 from os import path
 
-debug = True # activar el debug mode, para saber que esta haciendo
+debug = False # activar el debug mode, para saber que esta haciendo
 
 restaurantes_json_file = "C:\\Users\\usuario\\Desktop\\abderaglovo\\trabajo_daw_abderaglovo\\json\\restaurantes.json" # fichero json relativa
 restaurantes_historial = "C:\\Users\\usuario\\Desktop\\abderaglovo\\trabajo_daw_abderaglovo\\json\\historial_restaurantes.json" # fichero json relativa
