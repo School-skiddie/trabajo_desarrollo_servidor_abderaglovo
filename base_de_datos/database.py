@@ -4,8 +4,10 @@ from os import path
 debug = True # activar el debug mode, para saber que esta haciendo
 
 restaurantes_json_file = "C:\\Users\\usuario\\Desktop\\abderaglovo\\trabajo_daw_abderaglovo\\json\\restaurantes.json" # fichero json relativa
+restaurantes_historial = "C:\\Users\\usuario\\Desktop\\abderaglovo\\trabajo_daw_abderaglovo\\json\\historial_restaurantes.json" # fichero json relativa
+
 usuarios_json_file = "C:\\Users\\usuario\\Desktop\\abderaglovo\\trabajo_daw_abderaglovo\\json\\usuarios.json" # fichero json relativa
-usuarios_historial = "C:\\Users\\usuario\\Desktop\\abderaglovo\\trabajo_daw_abderaglovo\\json\\historial.json" # fichero json relativa
+usuarios_historial = "C:\\Users\\usuario\\Desktop\\abderaglovo\\trabajo_daw_abderaglovo\\json\\historial_usuarios.json" # fichero json relativa
 
 class Gerentes():
     # Añadir los datos de los usuarios al json
@@ -43,6 +45,19 @@ class Gerentes():
             print("\n[CARGA DE DATOS LISTA (RESTAURANTES)]: ",clases.restaurante.restaurantes_lista,"\n") # pruebas debug
             print("\n[CARGA DE DATOS CLASE (RESTAURANTES)]: ",clases.restaurante.restaurantes_clase,"\n") # pruebas debug
 
+    def cargar_historial_restaurantes():
+        # Comprobamos si existe
+        if path.isfile(restaurantes_historial) is False:
+            raise Exception("El archivo 'historial.json', no se ha encontrado, error...")
+        
+        with open(restaurantes_historial, "rb") as fp:
+            datos = dict(json.load(fp))
+
+        clases.restaurante.historial_restaurantes.update(datos) # esto para la lista, hacemos un update para añadir los nuevos valores
+        
+        if(debug):    
+            print("\n[CARGA DE DATOS HISTORIAL]: ",clases.restaurante.historial_restaurantes,"\n") # pruebas debug
+
     # Comprobacion de que el usuario existe,nombre
     def comprobacion_gerente_sesion(restaurante, password):
         for i in clases.cliente.restaurante.restaurantes_clase:
@@ -58,6 +73,7 @@ class Gerentes():
                 if(debug):
                     print("\n[BASE DE DATOS CLASES (RESTAURANTES)]: el restaurante existe\n")
                 return True
+
 class Usuarios():
     # Añadir los datos de los usuarios al json
     def añadir_datos(datos):

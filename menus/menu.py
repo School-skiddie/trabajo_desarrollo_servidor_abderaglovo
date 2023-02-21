@@ -119,7 +119,7 @@ def menu_principal():
 def menu_usuario(usuario):
     while True:
         print("1 - Hacer un pedido")
-        print(f"2 - Añadir credito a la cuenta [Credito Actual: {clases.cliente.saldo(usuario)}]")
+        print(f"2 - Añadir credito a la cuenta [Credito Actual: {clases.cliente.Cliente.saldo(usuario)}]")
         print("3 - Historial de pedidos")
         while True:
             try:
@@ -141,10 +141,10 @@ def menu_usuario(usuario):
             print("\nNumero de la tarjeta de credito 4XXXXXXXX......: ")
             print("\nFecha caducidad X/XX: ")
             print("\nCCV de la tarjeta de credito XXX: ")
-            clases.cliente.ingreso(usuario, cantidad)
+            clases.cliente.Cliente.ingreso(usuario, cantidad)
             print(f"\n[+] Se ha hecho un ingreso de {cantidad} a su cuenta.")
         elif(seleccion == 3):
-            clases.cliente.historial(usuario)
+            clases.cliente.Cliente.historial(usuario)
 
         funciones.funciones.pausa()
         funciones.funciones.borrar_pantalla()
@@ -157,10 +157,10 @@ def menu_restaurante(nombre):
         print("1 - Consultar historial de pedidos")
         print("2 - Generar un cupón de descuento")
         print("3 - Añadir un nuevo menu")
-        seleccion = input(">")
+        seleccion = int(input(">"))
 
         if(seleccion == 1):
-            pass
+            clases.cliente.restaurante.Restaurante.historial(nombre)
         elif(seleccion == 2):
             pass
         elif(seleccion == 3):
@@ -169,5 +169,8 @@ def menu_restaurante(nombre):
             print("3 - Postres")
         elif(seleccion == 4):
             pass
+
+        funciones.funciones.pausa()
+        funciones.funciones.borrar_pantalla()
 
 #---------------------------------------------------------------

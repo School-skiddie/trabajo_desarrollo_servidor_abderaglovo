@@ -1,6 +1,5 @@
 from random import randint
-from clases import menu
-from clases import restaurante
+from clases import menu,restaurante
 import base_de_datos.database
 
 clientes_clase = []
@@ -40,21 +39,21 @@ class Cliente:
     def modificar_saldo(self):
         pass
 
-# Obtener saldo
-def saldo(usuario):
-    for i in clientes_clase:
-        if(usuario == i.nombre):
-            return i.dinero
+    # Obtener saldo
+    def saldo(usuario):
+        for i in clientes_clase:
+            if(usuario == i.nombre):
+                return i.dinero
 
-# Obtener historial de compras
-def historial(usuario):
-    for historial in historial_clientes.get(usuario):
-        print (historial)
+    # Obtener historial de compras
+    def historial(usuario):
+        for historial in historial_clientes.get(usuario):
+            print (historial)
 
-# Ingresar dinero
-def ingreso(usuario, ingreso):
-    for i in clientes_clase:
-        if(usuario == i.nombre):
-            i.dinero += ingreso
-            clientes_lista[usuario]["saldo"] = clientes_lista[usuario]["saldo"]+ingreso
-            base_de_datos.database.añadir_datos(clientes_lista)
+    # Ingresar dinero
+    def ingreso(usuario, ingreso):
+        for i in clientes_clase:
+            if(usuario == i.nombre):
+                i.dinero += ingreso
+                clientes_lista[usuario]["saldo"] = clientes_lista[usuario]["saldo"]+ingreso
+                base_de_datos.database.Usuarios.añadir_datos(clientes_lista)

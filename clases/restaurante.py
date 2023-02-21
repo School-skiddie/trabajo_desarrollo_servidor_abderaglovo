@@ -1,5 +1,6 @@
 restaurantes_clase = []
 restaurantes_lista = {}
+historial_restaurantes = {}
 
 class Restaurante:
     def __init__(self, nombre, password, comidas, bebidas, postres, cocineros, reputacion = 0):
@@ -31,6 +32,11 @@ class Restaurante:
 
     def preparar_pedido(self):
        pass  
+
+    # Obtener historial de compras
+    def historial(nombre):
+        for historial in historial_restaurantes.get(nombre):
+            print (historial)
 
 
 
