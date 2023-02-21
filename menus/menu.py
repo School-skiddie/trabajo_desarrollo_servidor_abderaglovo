@@ -129,7 +129,7 @@ def menu_usuario(usuario):
                 print("Opcion desconocida..., por favor inserte otra vez su seleccion")
 
         if(seleccion == 1):
-            pass
+            base_de_datos.database.Gerentes.restaurantes()
         elif(seleccion == 2):
             while True:
                 cantidad = float(input("Inserte la cantidad, minimo 5.00 €: "))

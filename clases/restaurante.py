@@ -35,8 +35,10 @@ class Restaurante:
 
     # Obtener historial de compras
     def historial(nombre):
+        contador=0
         for historial in historial_restaurantes.get(nombre):
-            print (historial)
+            print (f"{contador} - {historial}")
+            contador=contador+1
 
 
 

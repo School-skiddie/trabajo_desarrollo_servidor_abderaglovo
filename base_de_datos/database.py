@@ -73,6 +73,12 @@ class Gerentes():
                 if(debug):
                     print("\n[BASE DE DATOS CLASES (RESTAURANTES)]: el restaurante existe\n")
                 return True
+    
+    def restaurantes():
+        contador=0
+        for restaurantes in clases.restaurante.restaurantes_lista.keys():
+            print (f"{contador} - {restaurantes}")
+            contador=contador+1
 
 class Usuarios():
     # Añadir los datos de los usuarios al json

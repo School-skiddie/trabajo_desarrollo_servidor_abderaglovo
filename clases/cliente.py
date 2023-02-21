@@ -47,8 +47,10 @@ class Cliente:
 
     # Obtener historial de compras
     def historial(usuario):
+        contador=0
         for historial in historial_clientes.get(usuario):
-            print (historial)
+            print (f"{contador} - {historial}")
+            contador=contador+1
 
     # Ingresar dinero
     def ingreso(usuario, ingreso):
