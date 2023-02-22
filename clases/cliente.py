@@ -16,11 +16,24 @@ class Cliente:
         self.telefono = telefono
         self.dinero = dinero
     
-    # Obtener el pedido
+    # Obtener pedido
+    def pedido():
+        for num_lista in lista_compra.keys():
+            for productos_lista in lista_compra[num_lista]:
+                print (f"{productos_lista}")
+
+    # Añadir pedido
     def pedido_añadir(nombre_restaurante, pedido_nombre, categoria):
-        for menu in restaurante.restaurantes_lista[nombre_restaurante][categoria][pedido_nombre]:
-            print(f"{menu['nombre']} - Precio: {menu['precio']} €")
-            lista_compra = {  }
+        seleccion = restaurante.restaurantes_lista[nombre_restaurante][categoria][pedido_nombre]
+
+        cantidad = int(input("\n[+] Inserte la cantidad: "))
+
+        #print (f"\n[+] Producto: {seleccion['nombre'] if cantidad < 1 else seleccion['nombre'] + f' x {cantidad}'} - Precio total: {seleccion['precio'] * cantidad} €")
+        
+        lista_compra[len(lista_compra)] = { 
+            "producto": f"{seleccion['nombre'] if cantidad < 1 else seleccion['nombre'] + f' x {cantidad}'}", 
+            "precio": {float(seleccion['precio'] * cantidad)} 
+        }
 
     # Obtener saldo
     def saldo(usuario):

@@ -141,24 +141,35 @@ def menu_usuario(usuario):
             while True:
                 funciones.funciones.borrar_pantalla()
                 try:
+                    print("====================================================\n")
+                    clases.cliente.Cliente.pedido()
+                    print("====================================================")
+                    print("\n")
                     print("1 - Comidas")
                     print("2 - Bebidas")
                     print("3 - Postres")
+                    print("4 - Completar pedido\n")
                     seleccion = int(input(">"))
                     if(seleccion == 1):
                         clases.restaurante.Restaurante.menu("comidas", nombre)
-                        pedido = input("\n[+] Escriba el nombre de la comida: ")
+                        pedido = int(input("\n[+] Escriba el id de la comida: "))
                         clases.cliente.Cliente.pedido_añadir(nombre, pedido, "comidas")
+                        funciones.funciones.pausa()
                     elif(seleccion == 2):
                         clases.restaurante.Restaurante.menu("bebidas", nombre)
-                        pedido = input("\n[+] Escriba el nombre de la bebida: ")
+                        pedido = int(input("\n[+] Escriba el id de la bebida: "))
                         clases.cliente.Cliente.pedido_añadir(nombre, pedido, "bebidas")
+                        funciones.funciones.pausa()
                     elif(seleccion == 3):
                         clases.restaurante.Restaurante.menu("postres", nombre)
-                        pedido = input("\n[+] Escriba el nombre del postre: ")
+                        pedido = int(input("\n[+] Escriba el id del postre: "))
                         clases.cliente.Cliente.pedido_añadir(nombre, pedido, "postres")
+                        funciones.funciones.pausa()
+                    elif(seleccion == 4):
+                        pass
                 except KeyError:
                     print("[-] El restaurante insertado no existe...")
+                    break
 
         elif(seleccion == 2):
             while True:

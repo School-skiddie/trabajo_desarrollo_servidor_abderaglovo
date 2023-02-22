@@ -1,3 +1,4 @@
+import funciones.funciones
 restaurantes_clase = []
 restaurantes_lista = {}
 historial_restaurantes = {}
@@ -43,6 +44,7 @@ class Restaurante:
     # Obtener menu del restaurante
     def menu(categoria, nombre):
         contador=0
+        funciones.funciones.borrar_pantalla()
         for menu in restaurantes_lista[nombre][categoria]:
             print(f"{contador} - {menu['nombre']} - Precio: {menu['precio']} €")
             contador=contador+1
