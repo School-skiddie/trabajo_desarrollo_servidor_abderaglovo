@@ -1,27 +1,79 @@
 {
     "Mohoso": {
-        "comidas": [
-            {"nombre":"pollo al horno", "precio": 2.50, "tipo":"comida"},
-            {"nombre":"milanesa con fritas", "precio": 3.50, "tipo":"comida"},
-            {"nombre":"estofado", "precio": 1.50, "tipo":"comida"},
-            {"nombre":"ravioles", "precio": 1.30, "tipo":"comida"}
-        ], 
-        "bebidas":[
-            {"nombre":"gaseosa", "precio": 1.20,"tipo":"bebida"},
-            {"nombre": "vino", "precio": 2.50,"tipo":"bebida"},
-            {"nombre": "champagne", "precio": 5.00,"tipo":"bebida"},
-            {"nombre": "agua", "precio": 1.00,"tipo":"bebida"}
-        ], 
-        "postres":[
-            {"nombre":"helado", "precio": 1.80,"tipo":"postre"},
-            {"nombre": "frutillas c/crema", "precio": 2.00,"tipo":"postre"},
-            {"nombre": "flan", "precio": 8.00,"tipo":"postre"},
-            {"nombre": "lemon pie", "precio": 8.00,"tipo":"postre"}
+        "bebidas": [
+            {
+                "nombre": "gaseosa",
+                "precio": 1.2,
+                "tipo": "bebida"
+            },
+            {
+                "nombre": "vino",
+                "precio": 2.5,
+                "tipo": "bebida"
+            },
+            {
+                "nombre": "champagne",
+                "precio": 5.0,
+                "tipo": "bebida"
+            },
+            {
+                "nombre": "agua",
+                "precio": 1.0,
+                "tipo": "bebida"
+            }
         ],
-        "cocineros":[
-            {"nombre":"Alejandro Guateque", "experiencia": "2 años", "energia": 100}
-        ], 
-        "reputacion": 0,
-        "password": "Perce2002"
+        "cocineros": [
+            {
+                "energia": 100,
+                "experiencia": "2 a\u00f1os",
+                "nombre": "Alejandro Guateque"
+            }
+        ],
+        "comidas": [
+            {
+                "nombre": "pollo al horno",
+                "precio": 2.5,
+                "tipo": "comida"
+            },
+            {
+                "nombre": "milanesa con fritas",
+                "precio": 3.5,
+                "tipo": "comida"
+            },
+            {
+                "nombre": "estofado",
+                "precio": 1.5,
+                "tipo": "comida"
+            },
+            {
+                "nombre": "ravioles",
+                "precio": 1.3,
+                "tipo": "comida"
+            }
+        ],
+        "password": "Perce2002",
+        "postres": [
+            {
+                "nombre": "helado",
+                "precio": 1.8,
+                "tipo": "postre"
+            },
+            {
+                "nombre": "frutillas c/crema",
+                "precio": 2.0,
+                "tipo": "postre"
+            },
+            {
+                "nombre": "flan",
+                "precio": 8.0,
+                "tipo": "postre"
+            },
+            {
+                "nombre": "lemon pie",
+                "precio": 8.0,
+                "tipo": "postre"
+            }
+        ],
+        "reputacion": 0
     }
 }

@@ -10,7 +10,13 @@ usuarios_json_file = "C:\\Users\\usuario\\Desktop\\abderaglovo\\trabajo_daw_abde
 usuarios_historial = "C:\\Users\\usuario\\Desktop\\abderaglovo\\trabajo_daw_abderaglovo\\json\\historial_usuarios.json" # fichero json relativa
 
 class Gerentes():
-    # Añadir los datos de los usuarios al json
+    # Añadir los datos del historial al json
+    def añadir_pedido_historial(datos):
+        js = json.dumps(datos, sort_keys=True, indent=4, separators=(',', ': '))
+        with open(restaurantes_historial, 'w+') as f:
+            f.write(js)
+
+    # Añadir los datos de los gerentes al json
     def añadir_datos(datos):
         js = json.dumps(datos, sort_keys=True, indent=4, separators=(',', ': '))
         with open(restaurantes_json_file, 'w+') as f:
@@ -36,7 +42,6 @@ class Gerentes():
             clases.restaurante.restaurantes_lista[carga]['comidas'], 
             clases.restaurante.restaurantes_lista[carga]['bebidas'], 
             clases.restaurante.restaurantes_lista[carga]['postres'], 
-            clases.restaurante.restaurantes_lista[carga]['cocineros'], 
             clases.restaurante.restaurantes_lista[carga]['reputacion'])
 
             clases.restaurante.restaurantes_clase.append(registrar)
@@ -75,12 +80,17 @@ class Gerentes():
                 return True
     
     def restaurantes():
-        contador=0
         for restaurantes in clases.restaurante.restaurantes_lista.keys():
-            print (f"{contador} - {restaurantes}")
-            contador=contador+1
+            print (f"- {restaurantes}")
 
 class Usuarios():
+
+    # Añadir los datos del historial al json
+    def añadir_pedido_usuarios_historial(datos):
+        js = json.dumps(datos, sort_keys=True, indent=4, separators=(',', ': '))
+        with open(usuarios_historial, 'w+') as f:
+            f.write(js)
+
     # Añadir los datos de los usuarios al json
     def añadir_datos(datos):
         js = json.dumps(datos, sort_keys=True, indent=4, separators=(',', ': '))

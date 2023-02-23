@@ -30,16 +30,21 @@ def menu_principal():
                     print("¡El restaurante ya se encuentra registrado!, intente con otro nombre")
                 else:
                     # registra el nuevo usuario a la lista
-                    registrar = clases.restaurante(nombre, password)
+                    registrar = clases.restaurante.Restaurante(nombre, password, "", "", "", 0)
                     
-                    clases.restaurante.restaurantes_lista[nombre] = { "password": password } # esto para el dictionario
+                    clases.restaurante.restaurantes_lista[nombre] = { 
+                        "bebidas": [ {} ], 
+                        "comidas": [ {} ], 
+                        "postres": [ {} ], 
+                        "reputacion": 0, 
+                        "password": password } # esto para el dictionario
 
                     clases.restaurante.restaurantes_clase.append(registrar) # registramos los nuevos valores a la clase
 
                     if(base_de_datos.database.debug):
                         print("\n[BASE DE DATOS CLASES]: añadido la base de datos a la lista\n")
 
-                    base_de_datos.database.Gerentes.añadir_datos(clases.cliente.restaurantes_lista) # añadimos los nuevos valores al json
+                    base_de_datos.database.Gerentes.añadir_datos(clases.restaurante.restaurantes_lista) # añadimos los nuevos valores al json
             
                     print("\n¡Se ha añadido a la base de datos correctamente!, ahora podra iniciar sesión\n")
                     funciones.funciones.pausa()
@@ -124,9 +129,11 @@ def menu_principal():
 #---------------------------------------------------------------
 def menu_usuario(usuario):
     while True:
+        tramites = str(clases.restaurante.pedidos_tramite).replace("[", "").replace("'", "").replace("]", "")
         print("1 - Hacer un pedido")
         print(f"2 - Añadir credito a la cuenta [Credito Actual: {clases.cliente.Cliente.saldo(usuario)}]")
         print("3 - Historial de pedidos")
+        print(f"Pedidos en tramite: {tramites} \n")
         while True:
             try:
                 seleccion = int(input(">"))
@@ -141,14 +148,15 @@ def menu_usuario(usuario):
             while True:
                 funciones.funciones.borrar_pantalla()
                 try:
-                    print("====================================================\n")
-                    clases.cliente.Cliente.pedido()
-                    print("====================================================")
+                    print("-==================================================-")
+                    clases.cliente.Cliente.pedido(False)
+                    print("-==================================================-")
                     print("\n")
                     print("1 - Comidas")
                     print("2 - Bebidas")
-                    print("3 - Postres")
-                    print("4 - Completar pedido\n")
+                    print("3 - Postres\n")
+                    print("4 - Completar pedido y pagar")
+                    print("5 - Cancelar pedido\n")
                     seleccion = int(input(">"))
                     if(seleccion == 1):
                         clases.restaurante.Restaurante.menu("comidas", nombre)
@@ -166,7 +174,11 @@ def menu_usuario(usuario):
                         clases.cliente.Cliente.pedido_añadir(nombre, pedido, "postres")
                         funciones.funciones.pausa()
                     elif(seleccion == 4):
-                        pass
+                        clases.restaurante.Restaurante.aceptar_pedido(nombre, usuario)
+                        break
+                    elif(seleccion == 5):
+                        clases.cliente.lista_compra.clear()
+                        break
                 except KeyError:
                     print("[-] El restaurante insertado no existe...")
                     break
@@ -197,7 +209,9 @@ def menu_restaurante(nombre):
     while True:
         print("1 - Consultar historial de pedidos")
         print("2 - Generar un cupón de descuento")
-        print("3 - Añadir un nuevo menu")
+        print("3 - Añadir/Remover un nuevo menu")
+        print("4 - Cocineros")
+        print("5 - Añadir/Expulsar cocineros")
         seleccion = int(input(">"))
 
         if(seleccion == 1):
@@ -205,9 +219,36 @@ def menu_restaurante(nombre):
         elif(seleccion == 2):
             pass
         elif(seleccion == 3):
-            print("1 - Comida")
-            print("2 - Bebidas")
-            print("3 - Postres")
+            while True:
+                opcion = input("\n[+] Si desea añadir o remover, escriba (y/n): ")
+
+                if(opcion.lower == "y"):
+                    print("Opcion añadir")
+                    print("1 - Comida")
+                    print("2 - Bebidas")
+                    print("3 - Postres")
+                    seleccion_categoria = int(input("> "))
+                    if(seleccion_categoria == 1):
+                        pass
+                    elif(seleccion_categoria == 2):
+                        pass
+                    elif(seleccion_categoria == 3):
+                        pass
+                elif(opcion.lower == "n"):
+                    print("Opcion modificar")
+                    print("1 - Comida")
+                    print("2 - Bebidas")
+                    print("3 - Postres")
+                    seleccion_categoria = int(input("> "))
+                    if(seleccion_categoria == 1):
+                        pass
+                    elif(seleccion_categoria == 2):
+                        pass
+                    elif(seleccion_categoria == 3):
+                        pass
+                else:
+                    print("[-] Error, esa opcion no existe, escribala de nuevo...")
+
         elif(seleccion == 4):
             pass
 

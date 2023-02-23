@@ -16,11 +16,23 @@ class Cliente:
         self.telefono = telefono
         self.dinero = dinero
     
+    # Completar pedido
+    def completar_pedido():
+        pass
+
     # Obtener pedido
-    def pedido():
+    def pedido(preciototal):
+        precio_total = 0
         for num_lista in lista_compra.keys():
-            for productos_lista in lista_compra[num_lista]:
-                print (f"{productos_lista}")
+            if(preciototal == False):
+                print (f"[+] {lista_compra[num_lista]['producto']} - Precio: {lista_compra[num_lista]['precio']} €")
+            precio_total=precio_total+lista_compra[num_lista]['precio']
+        
+        if(preciototal == False):    
+            print(f"\n[+] Precio total: {precio_total} €")
+        else:
+            return precio_total
+        
 
     # Añadir pedido
     def pedido_añadir(nombre_restaurante, pedido_nombre, categoria):
@@ -32,7 +44,7 @@ class Cliente:
         
         lista_compra[len(lista_compra)] = { 
             "producto": f"{seleccion['nombre'] if cantidad < 1 else seleccion['nombre'] + f' x {cantidad}'}", 
-            "precio": {float(seleccion['precio'] * cantidad)} 
+            "precio": float(seleccion['precio'] * cantidad) 
         }
 
     # Obtener saldo
@@ -47,6 +59,14 @@ class Cliente:
         for historial in historial_clientes.get(usuario):
             print (f"{contador} - {historial}")
             contador=contador+1
+
+    # Quitar dinero
+    def quitar_saldo(usuario, ingreso):
+        for i in clientes_clase:
+            if(usuario == i.nombre):
+                i.dinero -= ingreso
+                clientes_lista[usuario]["saldo"] = clientes_lista[usuario]["saldo"]-ingreso
+                base_de_datos.database.Usuarios.añadir_datos(clientes_lista)
 
     # Ingresar dinero
     def ingreso(usuario, ingreso):
