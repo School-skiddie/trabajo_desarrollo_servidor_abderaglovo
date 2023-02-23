@@ -27,6 +27,9 @@ class Restaurante:
             contador_productos=contador_productos+10
         historial_restaurantes[nombre] = f"Fecha: {datetime.date.today()} {productos} Total Pago: {clases.cliente.Cliente.pedido(True)} €"
 
+        if(clases.cliente.Cliente.saldo(nombre_usuario) < clases.cliente.Cliente.pedido(True)):
+            return print("[+] No tienes suficiente saldo para hacer este pedido") 
+
         base_de_datos.database.Gerentes.añadir_pedido_historial(historial_restaurantes)
 
         historial_restaurantes.clear()
@@ -39,9 +42,7 @@ class Restaurante:
 
         print(f"[+] El pedido se ha tramitado, tardará {'20' if contador_productos == 10 else contador_productos} minutos")
        
-        pedidos_tramite.append(f"(Pedido: {len(pedidos_tramite)} En {'20' if contador_productos == 10 else contador_productos} minutos), ")
-
-        funciones.funciones.pausa()
+        pedidos_tramite.append(f"(Pedido: {len(pedidos_tramite)} en {'20' if contador_productos == 10 else contador_productos} minutos estará listo..), ")
 
     # Obtener historial de compras
     def historial(nombre):
