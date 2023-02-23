@@ -13,12 +13,6 @@ class Restaurante:
         self.postres = postres
         self.reputacion = reputacion
 
-    def asignar_cocinero(self):
-        pass
-
-    def preparar_pedido(self):
-       pass  
-
     def aceptar_pedido(nombre, nombre_usuario):
         productos=""
         contador_productos=0
