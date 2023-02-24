@@ -210,8 +210,6 @@ def menu_restaurante(nombre):
         print("1 - Consultar historial de pedidos")
         print("2 - Generar un cupón de descuento")
         print("3 - Añadir/Remover un nuevo menu")
-        print("4 - Cocineros")
-        print("5 - Añadir/Expulsar cocineros")
         seleccion = int(input(">"))
 
         if(seleccion == 1):
@@ -222,35 +220,12 @@ def menu_restaurante(nombre):
             while True:
                 opcion = input("\n[+] Si desea añadir o remover, escriba (y/n): ")
 
-                if(opcion.lower == "y"):
-                    print("Opcion añadir")
-                    print("1 - Comida")
-                    print("2 - Bebidas")
-                    print("3 - Postres")
-                    seleccion_categoria = int(input("> "))
-                    if(seleccion_categoria == 1):
-                        pass
-                    elif(seleccion_categoria == 2):
-                        pass
-                    elif(seleccion_categoria == 3):
-                        pass
-                elif(opcion.lower == "n"):
-                    print("Opcion modificar")
-                    print("1 - Comida")
-                    print("2 - Bebidas")
-                    print("3 - Postres")
-                    seleccion_categoria = int(input("> "))
-                    if(seleccion_categoria == 1):
-                        pass
-                    elif(seleccion_categoria == 2):
-                        pass
-                    elif(seleccion_categoria == 3):
-                        pass
+                if(opcion.lower() == "y"):
+                    clases.restaurante.Restaurante.añadir_remover_menu(True, nombre)
+                elif(opcion.lower() == "n"):
+                    clases.restaurante.Restaurante.añadir_remover_menu(False, nombre)
                 else:
                     print("[-] Error, esa opcion no existe, escribala de nuevo...")
-
-        elif(seleccion == 4):
-            pass
 
         funciones.funciones.pausa()
         funciones.funciones.borrar_pantalla()

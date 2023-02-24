@@ -3,75 +3,56 @@
         "bebidas": [
             {
                 "nombre": "gaseosa",
-                "precio": 1.2,
-                "tipo": "bebida"
+                "precio": 1.2
             },
             {
                 "nombre": "vino",
-                "precio": 2.5,
-                "tipo": "bebida"
+                "precio": 2.5
             },
             {
                 "nombre": "champagne",
-                "precio": 5.0,
-                "tipo": "bebida"
+                "precio": 5.0
             },
             {
                 "nombre": "agua",
-                "precio": 1.0,
-                "tipo": "bebida"
-            }
-        ],
-        "cocineros": [
-            {
-                "energia": 100,
-                "experiencia": "2 a\u00f1os",
-                "nombre": "Alejandro Guateque"
+                "precio": 1.0
             }
         ],
         "comidas": [
             {
-                "nombre": "pollo al horno",
-                "precio": 2.5,
-                "tipo": "comida"
-            },
-            {
                 "nombre": "milanesa con fritas",
-                "precio": 3.5,
-                "tipo": "comida"
+                "precio": 3.5
             },
             {
                 "nombre": "estofado",
-                "precio": 1.5,
-                "tipo": "comida"
+                "precio": 1.5
             },
             {
                 "nombre": "ravioles",
-                "precio": 1.3,
-                "tipo": "comida"
+                "precio": 1.3
+            },
+            {
+                "nombre": "Pollo Asado",
+                "precio": 2.5
             }
         ],
         "password": "Perce2002",
         "postres": [
             {
                 "nombre": "helado",
-                "precio": 1.8,
-                "tipo": "postre"
+                "precio": 1.8
             },
             {
                 "nombre": "frutillas c/crema",
-                "precio": 2.0,
-                "tipo": "postre"
+                "precio": 2.0
             },
             {
                 "nombre": "flan",
-                "precio": 8.0,
-                "tipo": "postre"
+                "precio": 8.0
             },
             {
                 "nombre": "lemon pie",
-                "precio": 8.0,
-                "tipo": "postre"
+                "precio": 8.0
             }
         ],
         "reputacion": 0

@@ -1,4 +1,4 @@
-import clases.cliente, clases.restaurante, json, os
+import clases.cliente, clases.restaurante, json, os, funciones.funciones
 from os import path
 
 debug = False # activar el debug mode, para saber que esta haciendo
@@ -21,6 +21,44 @@ class Gerentes():
         js = json.dumps(datos, sort_keys=True, indent=4, separators=(',', ': '))
         with open(restaurantes_json_file, 'w+') as f:
             f.write(js)
+
+    def añadir_producto(nombre_restaurante, categoria, nombre_producto, precio_producto):
+        with open(restaurantes_json_file, "rb") as fp:
+            datos = dict(json.load(fp))
+
+        lista_temporal=[]   
+
+        for a in datos[nombre_restaurante][categoria]:
+            lista_temporal.append(a)                    # lo guardamos en una lista para las posiciones
+
+        lista_temporal.append({"nombre": nombre_producto, "precio": precio_producto})
+
+        datos[nombre_restaurante][categoria] = lista_temporal
+
+        js = json.dumps(datos, sort_keys=True, indent=4, separators=(',', ': '))
+        with open(restaurantes_json_file, 'w') as f:                                # luego actualizamos
+            f.write(js)
+
+        Gerentes.cargar_restaurantes()  # actualizamos los restaurantes
+
+    def remover_producto(menu, nombre_restaurante, categoria):
+        with open(restaurantes_json_file, "rb") as fp:
+            datos = dict(json.load(fp))
+
+        lista_temporal=[]   
+
+        for a in datos[nombre_restaurante][categoria]:
+            lista_temporal.append(a)                    # lo guardamos en una lista para las posiciones
+
+        lista_temporal.pop(menu)
+
+        datos[nombre_restaurante][categoria] = lista_temporal
+
+        js = json.dumps(datos, sort_keys=True, indent=4, separators=(',', ': '))
+        with open(restaurantes_json_file, 'w') as f:                                # luego actualizamos
+            f.write(js)
+
+        Gerentes.cargar_restaurantes()  # actualizamos los restaurantes
 
     # RESTAURANTES carga
     def cargar_restaurantes():
@@ -61,7 +99,9 @@ class Gerentes():
         clases.restaurante.historial_restaurantes.update(datos) # esto para la lista, hacemos un update para añadir los nuevos valores
         
         if(debug):    
-            print("\n[CARGA DE DATOS HISTORIAL]: ",clases.restaurante.historial_restaurantes,"\n") # pruebas debug
+            print("\n[CARGA DE DATOS HISTORIAL]: ", clases.restaurante.historial_restaurantes,"\n") # pruebas debug
+
+        clases.restaurante.historial_restaurantes_temp.update(clases.restaurante.historial_restaurantes)
 
     # Comprobacion de que el usuario existe,nombre
     def comprobacion_gerente_sesion(restaurante, password):
@@ -137,6 +177,8 @@ class Usuarios():
         
         if(debug):    
             print("\n[CARGA DE DATOS HISTORIAL]: ",clases.cliente.historial_clientes,"\n") # pruebas debug
+
+        clases.cliente.historial_clientes_temp.update(clases.cliente.historial_clientes)
 
     # Comprobacion de que el usuario existe,correo,telefono
     def comprobacion_usuario_sesion(usuario, password):
