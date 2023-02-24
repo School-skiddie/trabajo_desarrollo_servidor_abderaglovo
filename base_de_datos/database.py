@@ -1,13 +1,13 @@
-import clases.cliente, clases.restaurante, json
+import clases.cliente, clases.restaurante, json, os
 from os import path
 
 debug = False # activar el debug mode, para saber que esta haciendo
 
-restaurantes_json_file = "C:\\Users\\usuario\\Desktop\\abderaglovo\\trabajo_daw_abderaglovo\\json\\restaurantes.json" # fichero json relativa
-restaurantes_historial = "C:\\Users\\usuario\\Desktop\\abderaglovo\\trabajo_daw_abderaglovo\\json\\historial_restaurantes.json" # fichero json relativa
+restaurantes_json_file = f"{os.getcwd()}\\json\\restaurantes.json" # fichero json relativa
+restaurantes_historial = f"{os.getcwd()}\\json\\historial_restaurantes.json" # fichero json relativa
 
-usuarios_json_file = "C:\\Users\\usuario\\Desktop\\abderaglovo\\trabajo_daw_abderaglovo\\json\\usuarios.json" # fichero json relativa
-usuarios_historial = "C:\\Users\\usuario\\Desktop\\abderaglovo\\trabajo_daw_abderaglovo\\json\\historial_usuarios.json" # fichero json relativa
+usuarios_json_file = f"{os.getcwd()}\\json\\usuarios.json" # fichero json relativa
+usuarios_historial = f"{os.getcwd()}\\json\\historial_usuarios.json" # fichero json relativa
 
 class Gerentes():
     # Añadir los datos del historial al json
