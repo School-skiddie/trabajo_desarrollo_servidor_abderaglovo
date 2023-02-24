@@ -1,11 +1,12 @@
 from random import randint
 from clases import menu,restaurante
 import base_de_datos.database
+from collections import defaultdict
 
 clientes_clase = []
 clientes_lista = {}
 historial_clientes = {}
-
+historial_clientes_temp = defaultdict(list)
 lista_compra = {} # Aqui guardaremos la lista de la compra
 
 class Cliente:
@@ -55,7 +56,11 @@ class Cliente:
 
     # Obtener historial de compras
     def historial(usuario):
-        print (f"[+] - {historial_clientes[usuario]}")
+        try:
+            for mostrar in historial_clientes[usuario]:
+                print (f"[+] - {mostrar}\n")
+        except KeyError:
+            print("[+] No se ha encontrado nada en su historial...")
 
     # Quitar dinero
     def quitar_saldo(usuario, ingreso):
