@@ -33,8 +33,6 @@ class Restaurante:
         
         historial_restaurantes = historial_restaurantes_temp
 
-        
-
         clases.cliente.historial_clientes_temp[nombre_usuario].append(f"Fecha: {datetime.date.today()} {productos} Total Pago: {clases.cliente.Cliente.pedido(True)} €")
         clases.cliente.historial_clientes = clases.cliente.historial_clientes_temp
 
