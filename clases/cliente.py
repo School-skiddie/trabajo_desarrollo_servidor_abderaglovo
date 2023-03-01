@@ -36,10 +36,8 @@ class Cliente:
         
 
     # Añadir pedido
-    def pedido_añadir(nombre_restaurante, pedido_nombre, categoria):
+    def pedido_añadir(nombre_restaurante, pedido_nombre, categoria, cantidad):
         seleccion = restaurante.restaurantes_lista[nombre_restaurante][categoria][pedido_nombre]
-
-        cantidad = int(input("\n[+] Inserte la cantidad: "))
 
         #print (f"\n[+] Producto: {seleccion['nombre'] if cantidad < 1 else seleccion['nombre'] + f' x {cantidad}'} - Precio total: {seleccion['precio'] * cantidad} €")
         

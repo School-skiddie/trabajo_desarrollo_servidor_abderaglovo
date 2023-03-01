@@ -161,17 +161,17 @@ def menu_usuario(usuario):
                     if(seleccion == 1):
                         clases.restaurante.Restaurante.menu("comidas", nombre)
                         pedido = int(input("\n[+] Escriba el id de la comida: "))
-                        clases.cliente.Cliente.pedido_añadir(nombre, pedido, "comidas")
+                        clases.cliente.Cliente.pedido_añadir(nombre, pedido, "comidas", int(input("\n[+] Inserte la cantidad: ")))
                         funciones.funciones.pausa()
                     elif(seleccion == 2):
                         clases.restaurante.Restaurante.menu("bebidas", nombre)
                         pedido = int(input("\n[+] Escriba el id de la bebida: "))
-                        clases.cliente.Cliente.pedido_añadir(nombre, pedido, "bebidas")
+                        clases.cliente.Cliente.pedido_añadir(nombre, pedido, "bebidas", int(input("\n[+] Inserte la cantidad: ")))
                         funciones.funciones.pausa()
                     elif(seleccion == 3):
                         clases.restaurante.Restaurante.menu("postres", nombre)
                         pedido = int(input("\n[+] Escriba el id del postre: "))
-                        clases.cliente.Cliente.pedido_añadir(nombre, pedido, "postres")
+                        clases.cliente.Cliente.pedido_añadir(nombre, pedido, "postres", int(input("\n[+] Inserte la cantidad: ")))
                         funciones.funciones.pausa()
                     elif(seleccion == 4):
                         clases.restaurante.Restaurante.aceptar_pedido(nombre, usuario)
