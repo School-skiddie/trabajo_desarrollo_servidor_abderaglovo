@@ -174,7 +174,7 @@ def menu_usuario(usuario):
                         clases.cliente.Cliente.pedido_añadir(nombre, pedido, "postres", int(input("\n[+] Inserte la cantidad: ")))
                         funciones.funciones.pausa()
                     elif(seleccion == 4):
-                        clases.restaurante.Restaurante.aceptar_pedido(nombre, usuario)
+                        clases.restaurante.Restaurante.aceptar_pedido(nombre, usuario, False)
                         break
                     elif(seleccion == 5):
                         clases.cliente.lista_compra.clear()

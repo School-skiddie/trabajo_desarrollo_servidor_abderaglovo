@@ -18,7 +18,7 @@ class Restaurante:
         self.postres = postres
         self.reputacion = reputacion
 
-    def aceptar_pedido(nombre, nombre_usuario):
+    def aceptar_pedido(nombre, nombre_usuario, grafico):
         productos=""
         contador_productos=0
 
@@ -27,7 +27,11 @@ class Restaurante:
             contador_productos=contador_productos+10
 
         if(clases.cliente.Cliente.saldo(nombre_usuario) < clases.cliente.Cliente.pedido(True)):
-            return print("[+] No tienes suficiente saldo para hacer este pedido") 
+            if(grafico):
+                return False
+            else:
+                return print("[+] No tienes suficiente saldo para hacer este pedido")
+
 
         historial_restaurantes_temp[nombre].append(f"[Usuario: {nombre_usuario}] Fecha: {datetime.date.today()} {productos} Total Pago: {clases.cliente.Cliente.pedido(True)} €")
         
@@ -41,8 +45,11 @@ class Restaurante:
         base_de_datos.database.Usuarios.añadir_pedido_usuarios_historial(clases.cliente.historial_clientes)
 
         clases.cliente.Cliente.quitar_saldo(nombre_usuario, clases.cliente.Cliente.pedido(True))
-
-        print(f"[+] El pedido se ha tramitado, tardará {'20' if contador_productos == 10 else contador_productos} minutos")
+        
+        if(grafico):
+            return True
+        else:
+            print(f"[+] El pedido se ha tramitado, tardará {'20' if contador_productos == 10 else contador_productos} minutos")
        
         pedidos_tramite.append(f"(Pedido: {len(pedidos_tramite)} en {'20' if contador_productos == 10 else contador_productos} minutos estará listo..), ")
 
