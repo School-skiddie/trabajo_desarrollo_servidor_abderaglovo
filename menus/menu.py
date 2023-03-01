@@ -208,15 +208,12 @@ def menu_usuario(usuario):
 def menu_restaurante(nombre):
     while True:
         print("1 - Consultar historial de pedidos")
-        print("2 - Generar un cupón de descuento")
-        print("3 - Añadir/Remover un nuevo menu")
+        print("2 - Añadir/Remover un nuevo menu")
         seleccion = int(input(">"))
 
         if(seleccion == 1):
             clases.cliente.restaurante.Restaurante.historial(nombre)
         elif(seleccion == 2):
-            pass
-        elif(seleccion == 3):
             while True:
                 opcion = input("\n[+] Si desea añadir o remover, escriba (y/n): ")
 

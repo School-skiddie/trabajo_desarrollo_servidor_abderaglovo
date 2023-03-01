@@ -1,8 +1,6 @@
 import funciones.funciones, base_de_datos.database, datetime, clases.cliente, clases.restaurante
 from collections import defaultdict
 
-import json
-
 restaurantes_clase = []
 restaurantes_lista = {}
 historial_restaurantes_temp = defaultdict(list) # esto es para que lo guarde temporalmente y luego lo elimine con un clear
