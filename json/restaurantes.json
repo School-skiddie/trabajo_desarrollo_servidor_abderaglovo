@@ -56,5 +56,18 @@
             }
         ],
         "reputacion": 0
+    },
+    "Mohoso_dos": {
+        "bebidas": [
+            {}
+        ],
+        "comidas": [
+            {}
+        ],
+        "password": "Perceval2002",
+        "postres": [
+            {}
+        ],
+        "reputacion": 0
     }
 }
