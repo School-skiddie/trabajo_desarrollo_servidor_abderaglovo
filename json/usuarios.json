@@ -1,8 +1,14 @@
 {
+    "Adrian": {
+        "correo": "notengojenero",
+        "password": "123",
+        "saldo": 6000.0,
+        "telefono": "600070809"
+    },
     "Alejandro": {
         "correo": "themachinehack@gmail.com",
         "password": "Perceval2002",
-        "saldo": 3823928.2,
+        "saldo": 3823859.5,
         "telefono": 630909634
     },
     "Sam": {
@@ -10,6 +16,12 @@
         "password": "putoalejandro",
         "saldo": 51000.0,
         "telefono": 666666666
+    },
+    "fghgf": {
+        "correo": "ghgfhffh",
+        "password": "hgfhfg",
+        "saldo": 1000,
+        "telefono": "hfghfg"
     },
     "hola": {
         "correo": "hola",
