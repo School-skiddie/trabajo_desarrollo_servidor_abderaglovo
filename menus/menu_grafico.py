@@ -1,8 +1,13 @@
-import base_de_datos.database, clases.restaurante, funciones.funciones, time, clases.cliente, clases.restaurante, os
+import base_de_datos.database
+import clases.restaurante
+import clases.cliente
+import clases.restaurante
+import os
+import tkinter
 
 from pathlib import Path
 
-from tkinter import Tk, Canvas, Entry, Button, PhotoImage, Label, ttk
+from tkinter import Tk, Canvas, Entry, Button, PhotoImage, Label, ttk, Checkbutton, BooleanVar
 
 OUTPUT_PATH = Path(__file__).parent
 ASSETS_PATH = OUTPUT_PATH / Path(f"{os.getcwd()}\\theme\\frame0")
@@ -13,6 +18,86 @@ def relative_to_assets(path: str) -> Path:
 
 
 ventana = Tk()
+
+def menu_principal_grafico_registro():  # login
+    ventana.geometry("450x600")
+    ventana.configure(bg="#FFFFFF")
+    ventana.title("registro")
+
+    canvas = Canvas(
+        ventana,
+        bg="#FFFFFF",
+        height=491,
+        width=450,
+        bd=0,
+        highlightthickness=0,
+        relief="ridge"
+    ).place(x=0, y=0)
+
+    button_image_1 = PhotoImage(
+        file=relative_to_assets("boton_registrarse.png"))
+
+    Button(
+        image=button_image_1,
+        borderwidth=0,
+        highlightthickness=0,
+        bg="#FFFFFF",
+        command=lambda: print("registro"),
+        relief="flat"
+    ).place(x=94.0,
+            y=520.0,
+            width=262.0,
+            height=43.0
+            )
+
+    error_texto = Label(ventana, font="Helvetica 15", fg="#ffffff",
+                            background="red", text="Error, datos incorrectos").place(x=80.0,
+                                                                                              y=30.0,
+                                                                                              width=300.0,
+                                                                                              height=43.0)
+
+    Label(ventana, font="Helvetica 20",
+          text="Usuario", bg="#FFFFFF").place(x=94.0,
+                                              y=100.0)
+
+    usuario = Entry(ventana, font="Helvetica 20", background="#ccc6c6")
+    usuario.place(x=94.0,
+                  y=150.0,
+                  width=262.0,
+                  height=43.0)
+
+    Label(ventana, font="Helvetica 20", text="Contraseña", bg="#FFFFFF").place(x=94.0,
+                                                                               y=200.0)
+
+    contraseña = Entry(ventana, font="Helvetica 20",
+                       background="#ccc6c6", show="*")
+    contraseña.place(x=94.0,
+                     y=250.0,
+                     width=262.0,
+                     height=43.0)
+
+    Label(ventana, font="Helvetica 20", text="Telefono", bg="#FFFFFF").place(x=94.0,
+                                                                               y=300.0)
+
+    telefono = Entry(ventana, font="Helvetica 20",
+                       background="#ccc6c6")
+    telefono.place(x=94.0,
+                     y=350.0,
+                     width=262.0,
+                     height=43.0)
+    
+    Label(ventana, font="Helvetica 20", text="Correo", bg="#FFFFFF").place(x=94.0,
+                                                                               y=400.0)
+
+    correo = Entry(ventana, font="Helvetica 20",
+                       background="#ccc6c6")
+    correo.place(x=94.0,
+                     y=450.0,
+                     width=262.0,
+                     height=43.0)
+    
+    ventana.resizable(False, False)
+    ventana.mainloop()
 
 def menu_principal_grafico_inicio_sesion():  # login
     ventana.geometry("450x491")
@@ -27,48 +112,44 @@ def menu_principal_grafico_inicio_sesion():  # login
         bd=0,
         highlightthickness=0,
         relief="ridge"
-    )
+    ).place(x=0, y=0)
 
-    canvas.place(x=0, y=0)
     button_image_1 = PhotoImage(
         file=relative_to_assets("boton_registro.png"))
-    boton_registro = Button(
+
+    Button(
         image=button_image_1,
         borderwidth=0,
         highlightthickness=0,
         bg="#FFFFFF",
-        command=lambda: print("registro"),
+        command=lambda: menu_principal_grafico_registro(),
         relief="flat"
-    )
-    boton_registro.place(
-        x=94.0,
-        y=388.0,
-        width=262.0,
-        height=43.0
-    )
+    ).place(x=94.0,
+            y=388.0,
+            width=262.0,
+            height=43.0
+            )
 
     button_image_2 = PhotoImage(
         file=relative_to_assets("boton_sesion.png"))
 
-    boton_inicio_sesion = Button(
-        image=button_image_2,
-        borderwidth=0,
-        highlightthickness=0,
-        bg="#FFFFFF",
-        command=lambda: iniciar_sesion(usuario.get(), contraseña.get()),
-        relief="flat"
-    )
-    boton_inicio_sesion.place(
-        x=94.0,
-        y=338.0,
-        width=262.0,
-        height=43.0
-    )
+    boton_inicio_sesion = Button(image=button_image_2,
+                                 borderwidth=0,
+                                 highlightthickness=0,
+                                 bg="#FFFFFF",
+                                 command=lambda: iniciar_sesion(
+                                     usuario.get(), contraseña.get(), valor_guardado.get()),
+                                 relief="flat"
+                                 )
+    boton_inicio_sesion.place(x=94.0,
+                              y=338.0,
+                              width=262.0,
+                              height=43.0
+                              )
 
-    usuario_texto = Label(ventana, font="Helvetica 20",
-                          text="Usuario", bg="#FFFFFF")
-    usuario_texto.place(x=94.0,
-                        y=125.0)
+    Label(ventana, font="Helvetica 20",
+          text="Usuario", bg="#FFFFFF").place(x=94.0,
+                                              y=125.0)
 
     usuario = Entry(ventana, font="Helvetica 20", background="#ccc6c6")
     usuario.place(x=94.0,
@@ -76,10 +157,8 @@ def menu_principal_grafico_inicio_sesion():  # login
                   width=262.0,
                   height=43.0)
 
-    contraseña_texto = Label(ventana, font="Helvetica 20",
-                             text="Contraseña", bg="#FFFFFF")
-    contraseña_texto.place(x=94.0,
-                           y=215.0)
+    Label(ventana, font="Helvetica 20", text="Contraseña", bg="#FFFFFF").place(x=94.0,
+                                                                               y=215.0)
 
     contraseña = Entry(ventana, font="Helvetica 20",
                        background="#ccc6c6", show="*")
@@ -87,7 +166,11 @@ def menu_principal_grafico_inicio_sesion():  # login
                      y=260.0,
                      width=262.0,
                      height=43.0)
-
+    valor_guardado = BooleanVar()
+    checkbox = Checkbutton(ventana, text='Iniciar sesión, registro como gerente', variable=valor_guardado, onvalue=True, offvalue=False)
+    checkbox.place(x=94.0,
+                     y=305.0)
+    
     ventana.resizable(False, False)
     ventana.mainloop()
 
@@ -105,20 +188,19 @@ def menu_usuario_grafico(usuario):  # usuario
         bd=0,
         highlightthickness=0,
         relief="ridge"
-    )
+    ).place(x=0, y=0)
 
-    canvas.place(x=0, y=0)
     button_image_1 = PhotoImage(
         file=relative_to_assets("boton_pedido.png"))
-    button_1 = Button(
+
+    Button(
         image=button_image_1,
         borderwidth=0,
         highlightthickness=0,
         bg="#FFFFFF",
         command=lambda: menu_restaurantes(usuario),
         relief="flat"
-    )
-    button_1.place(
+    ).place(
         x=94.0,
         y=277.0,
         width=262.0,
@@ -127,15 +209,14 @@ def menu_usuario_grafico(usuario):  # usuario
 
     button_image_2 = PhotoImage(
         file=relative_to_assets("boton_credito.png"))
-    button_2 = Button(
+    Button(
         image=button_image_2,
         borderwidth=0,
         highlightthickness=0,
         bg="#FFFFFF",
         command=lambda: menu_añadir_saldo(usuario, False),
         relief="flat"
-    )
-    button_2.place(
+    ).place(
         x=94.0,
         y=224.0,
         width=262.0,
@@ -144,15 +225,14 @@ def menu_usuario_grafico(usuario):  # usuario
 
     button_image_3 = PhotoImage(
         file=relative_to_assets("boton_historial.png"))
-    button_3 = Button(
+    Button(
         image=button_image_3,
         borderwidth=0,
         highlightthickness=0,
         bg="#FFFFFF",
         command=lambda: menu_historial(usuario, "historial", ""),
         relief="flat"
-    )
-    button_3.place(
+    ).place(
         x=94.0,
         y=171.0,
         width=262.0,
@@ -161,29 +241,29 @@ def menu_usuario_grafico(usuario):  # usuario
 
     button_image_4 = PhotoImage(
         file=relative_to_assets("boton_pedidos.png"))
-    button_4 = Button(
+    Button(
         image=button_image_4,
         borderwidth=0,
         bg="#FFFFFF",
         highlightthickness=0,
         command=lambda: menu_historial(usuario, "tramites", ""),
         relief="flat"
-    )
-    button_4.place(
+    ).place(
         x=94.0,
         y=360.0,
         width=262.0,
         height=43.0
     )
-    texto_bienvenido = Label(ventana, font="Helvetica 15", fg="#ffffff",
-                             background="#6aa84f", text=f"Bienvenido de nuevo, {usuario}..")
-    texto_bienvenido.place(x=80.0,
-                           y=60.0,
-                           width=300.0,
-                           height=43.0)
+
+    Label(ventana, font="Helvetica 15", fg="#ffffff",
+          background="#6aa84f", text=f"Bienvenido de nuevo, {usuario}..").place(x=80.0,
+                                                                                y=60.0,
+                                                                                width=300.0,
+                                                                                height=43.0)
 
     ventana.resizable(False, False)
     ventana.mainloop()
+
 
 def menu_historial_regresar(usuario, restaurante):
     if(not bool(restaurante)):
@@ -203,69 +283,82 @@ def menu_historial(usuario, tipo, restaurante):
         bd=0,
         highlightthickness=0,
         relief="ridge"
-    )
+    ).place(x=0, y=0)
 
-    canvas.place(x=0, y=0)
     button_image_1 = PhotoImage(
         file=relative_to_assets("boton_regresar.png"))
-    
-    button_1 = Button(
+
+    Button(
         image=button_image_1,
         borderwidth=0,
         highlightthickness=0,
         bg="#FFFFFF",
-        command=lambda: [ menu_historial_regresar(usuario, restaurante)],
+        command=lambda: [menu_historial_regresar(
+            usuario, restaurante), lista.clear()],
         relief="flat"
-    )
-    button_1.place(
+    ).place(
         x=94.0,
         y=351.0,
         width=262.0,
         height=43.0
     )
 
+    carrito = ""
     lista = []
     precio = 0
+
     if(tipo == "historial"):
         for mostrar in clases.cliente.historial_clientes[usuario]:
-            lista.append(str(mostrar).replace("Producto", "\nProducto:")+"\n")
+            lista.append(str(mostrar).replace("Producto", "\nProducto")+"\n")
     elif(tipo == "tramites"):
         for mostrar in clases.cliente.historial_clientes[usuario]:
-            lista.append(str(clases.restaurante.pedidos_tramite).replace("[", "").replace("'", "").replace("]", ""))
+            lista.append(str(clases.restaurante.pedidos_tramite).replace(
+                "[", "").replace("'", "").replace("]", ""))
     elif(tipo == "carrito"):
         precio_total = 0
         for num_lista in clases.cliente.lista_compra.keys():
-            lista.append(str(f"{clases.cliente.lista_compra[num_lista]['producto']} - Precio: {clases.cliente.lista_compra[num_lista]['precio']} €\n"))
-            precio += precio_total+clases.cliente.lista_compra[num_lista]['precio']
+            carrito += str(f"[+] {clases.cliente.lista_compra[num_lista]['producto']} - Precio: {clases.cliente.lista_compra[num_lista]['precio']} €\n")
+            precio += precio_total + \
+                clases.cliente.lista_compra[num_lista]['precio']
 
     button_image_2 = PhotoImage(
         file=relative_to_assets("boton_ver_historial.png"))
 
-    boton_dic={}
-    contador = 0
+    if(tipo == "carrito"):
+        Label(text=carrito).place(relx=0.5, rely=0.5, anchor=tkinter.CENTER)
+    else:
+        boton_dic = {}
+        contador = 0
 
-    for mostrar in lista:
-        if(contador >= 5): break
-        print(contador)
+        if(len(lista) <= 0):
+            print(len(lista))
+            Label(text="No se ha encontrado nada en el historial...").place(
+                relx=0.5, rely=0.5, anchor=tkinter.CENTER)
+        else:
+            for mostrar in lista:
+                if(contador >= 5):
+                    break
 
-        boton_dic[contador] = { Button(
-            image=button_image_2,
-            borderwidth=0,
-            highlightthickness=0,
-            bg="#FFFFFF",
-            text=contador,
-            command = lambda x = contador: menu_historial_por_item(usuario, lista, x, restaurante),
-            relief="flat"
-        ).place(
-            x=94.0,
-            y=30.0 + (60 * contador)) }
+                boton_dic[contador] = {Button(
+                    image=button_image_2,
+                    borderwidth=0,
+                    highlightthickness=0,
+                    bg="#FFFFFF",
+                    text=contador,
+                    command=lambda posicion=contador: menu_historial_por_item(
+                        usuario, lista, posicion, restaurante, tipo),
+                    relief="flat"
+                ).place(
+                    x=94.0,
+                    y=30.0 + (60 * contador))}
 
-        contador=contador+1
+                contador = contador+1
 
     ventana.resizable(False, False)
     ventana.mainloop()
 
-def menu_historial_por_item(usuario, lista, posicion, restaurante):
+
+def menu_historial_por_item(usuario, lista, posicion, restaurante, tipo):
     ventana.title("Historial")
     ventana.geometry("450x491")
     canvas = Canvas(
@@ -276,32 +369,31 @@ def menu_historial_por_item(usuario, lista, posicion, restaurante):
         bd=0,
         highlightthickness=0,
         relief="ridge"
-    )
+    ).place(x=0, y=0)
 
-    canvas.place(x=0, y=0)
     button_image_1 = PhotoImage(
         file=relative_to_assets("boton_regresar.png"))
-    
-    button_1 = Button(
+
+    Button(
         image=button_image_1,
         borderwidth=0,
         highlightthickness=0,
         bg="#FFFFFF",
-        command=lambda: [ menu_historial_regresar(usuario, restaurante)],
+        command=lambda: [menu_historial(usuario, tipo, restaurante)],
         relief="flat"
-    )
-    button_1.place(
+    ).place(
         x=94.0,
         y=351.0,
         width=262.0,
         height=43.0
     )
 
-    texto = Label(text=lista[posicion]).grid(row=4,column=4)
-    texto.pack()
+    Label(text=lista[posicion]).place(
+        relx=0.5, rely=0.5, anchor=tkinter.CENTER)
 
     ventana.resizable(False, False)
     ventana.mainloop()
+
 
 def menu_restaurantes(usuario):
     ventana.title("Restaurantes")
@@ -315,54 +407,54 @@ def menu_restaurantes(usuario):
         bd=0,
         highlightthickness=0,
         relief="ridge"
-    )
+    ).place(x=0, y=0)
 
-    canvas.place(x=0, y=0)
-    button_image_1 = PhotoImage(
-        file=relative_to_assets("boton_continuar.png"))
-    button_1 = Button(
+    button_image_1 = PhotoImage(file=relative_to_assets("boton_continuar.png"))
+
+    Button(
         image=button_image_1,
         borderwidth=0,
         highlightthickness=0,
         bg="#FFFFFF",
         command=lambda: menu_pedidos(combo.get(), usuario),
         relief="flat"
-    )
-    button_1.place(
+    ).place(
         x=94.0,
         y=190.0,
         width=262.0,
         height=43.0
     )
+
     lista = []
 
     for restaurantes in clases.restaurante.restaurantes_lista.keys():
         lista.append(restaurantes)
 
-    texto = Label(ventana, text="Selecciona el restaurante",
-                  font="20", bg="#FFFFFF")
-    texto.place(x=90, y=80)
+    Label(ventana, text="Selecciona el restaurante",
+          font="20", bg="#FFFFFF").place(x=90, y=80)
 
     combo = ttk.Combobox(
         state="readonly",
         values=lista,
         font="Helvetica 20"
     )
+    combo.current(0)
     combo.place(x=80.0, y=130.0, width=300.0, height=50.0)
 
     ventana.resizable(False, False)
     ventana.mainloop()
+
 
 def comprobar_cancelacion(suficiente, usuario):
     if(suficiente):
         menu_usuario_grafico(usuario)
     else:
         error_texto = Label(ventana, font="Helvetica 15", fg="#ffffff",
-                            background="red", text="Error, no tienes suficiente saldo")
-        error_texto.place(x=80.0,
-                          y=60.0,
-                          width=300.0,
-                          height=43.0)
+                            background="red", text="Error, no tienes suficiente saldo").place(x=80.0,
+                                                                                              y=60.0,
+                                                                                              width=300.0,
+                                                                                              height=43.0)
+
 
 def menu_pedidos(restaurante, usuario):
     ventana.title(f"Pedidos {restaurante}")
@@ -375,81 +467,76 @@ def menu_pedidos(restaurante, usuario):
         bd=0,
         highlightthickness=0,
         relief="ridge"
-    )
-
-    canvas.place(x=0, y=0)
+    ).place(x=0, y=0)
 
     button_ver_carrito = PhotoImage(
         file=relative_to_assets("boton_carrito.png"))
-    boton_carrito = Button(
+
+    Button(
         image=button_ver_carrito,
         borderwidth=0,
         highlightthickness=0,
         bg="#FFFFFF",
         command=lambda: menu_historial(usuario, "carrito", restaurante),
         relief="flat"
-    )
-    boton_carrito.place(
+    ).place(
         x=94.0,
         y=134.0,
         width=262.0,
         height=43.0
     )
 
-    button_image_2 = PhotoImage(
-        file=relative_to_assets("boton_comidas.png"))
-    boton_comidas = Button(
+    button_image_2 = PhotoImage(file=relative_to_assets("boton_comidas.png"))
+
+    Button(
         image=button_image_2,
         borderwidth=0,
         highlightthickness=0,
         bg="#FFFFFF",
         command=lambda: menu_categoria(usuario, restaurante, "comidas"),
         relief="flat"
-    )
-    boton_comidas.place(
+    ).place(
         x=94.0,
         y=186.0,
         width=262.0,
         height=43.0
     )
 
-    button_image_3 = PhotoImage(
-        file=relative_to_assets("boton_bebidas.png"))
-    boton_bebidas = Button(
+    button_image_3 = PhotoImage(file=relative_to_assets("boton_bebidas.png"))
+
+    Button(
         image=button_image_3,
         borderwidth=0,
         highlightthickness=0,
         bg="#FFFFFF",
         command=lambda: menu_categoria(usuario, restaurante, "bebidas"),
         relief="flat"
-    )
-    boton_bebidas.place(
+    ).place(
         x=94.0,
         y=239.0,
         width=262.0,
         height=43.0
     )
 
-    button_image_4 = PhotoImage(
-        file=relative_to_assets("boton_postres.png"))
-    boton_postres = Button(
+    button_image_4 = PhotoImage(file=relative_to_assets("boton_postres.png"))
+
+    Button(
         image=button_image_4,
         borderwidth=0,
         highlightthickness=0,
         bg="#FFFFFF",
         command=lambda: menu_categoria(usuario, restaurante, "postres"),
         relief="flat"
-    )
-    boton_postres.place(
+    ).place(
         x=94.0,
         y=292.0,
         width=262.0,
         height=43.0
     )
 
-    button_image_5 = PhotoImage(
-        file=relative_to_assets("boton_completar.png"))
-    boton_completar = Button(
+    button_image_5 = PhotoImage(file=relative_to_assets("boton_completar.png"))
+
+    Button(
         image=button_image_5,
         borderwidth=0,
         highlightthickness=0,
@@ -457,15 +544,15 @@ def menu_pedidos(restaurante, usuario):
         command=lambda: [
             comprobar_cancelacion(clases.restaurante.Restaurante.aceptar_pedido(restaurante, usuario, True), usuario)],
         relief="flat"
-    )
-    boton_completar.place(x=94.0,
-                          y=374.0,
-                          width=262.0,
-                          height=43.0
-                          )
-    button_image_1 = PhotoImage(
-        file=relative_to_assets("boton_cancelar.png"))
-    boton_cancelar = Button(
+    ).place(x=94.0,
+            y=374.0,
+            width=262.0,
+            height=43.0
+            )
+
+    button_image_1 = PhotoImage(file=relative_to_assets("boton_cancelar.png"))
+
+    Button(
         image=button_image_1,
         borderwidth=0,
         highlightthickness=0,
@@ -473,27 +560,34 @@ def menu_pedidos(restaurante, usuario):
         command=lambda: [menu_usuario_grafico(
             usuario), clases.cliente.lista_compra.clear()],
         relief="flat"
-    )
-    boton_cancelar.place(x=94.0, y=426.0, width=262.0, height=43.0)
+    ).place(x=94.0, y=426.0, width=262.0, height=43.0)
+
     ventana.resizable(False, False)
     ventana.mainloop()
 
 
-def iniciar_sesion(usuario, password):
-    if (base_de_datos.database.Usuarios.comprobacion_usuario_sesion(usuario, password)):
-        menu_usuario_grafico(usuario)
+def iniciar_sesion(usuario, password, gerente):
+    if(gerente):
+        if(base_de_datos.database.Gerentes.comprobacion_gerente_sesion(usuario, password)):
+            print("si")
+        else:
+            Label(ventana, font="Helvetica 15", fg="#ffffff",
+                                background="red", text="Error, Datos incorrectos").place(x=80.0,
+                                                                                        y=60.0,
+                                                                                        width=300.0,
+                                                                                        height=43.0)
     else:
-        error_texto = Label(ventana, font="Helvetica 15", fg="#ffffff",
-                            background="red", text="Error, Datos incorrectos")
-        error_texto.place(x=80.0,
-                          y=60.0,
-                          width=300.0,
-                          height=43.0)
+        if (base_de_datos.database.Usuarios.comprobacion_usuario_sesion(usuario, password)):
+            menu_usuario_grafico(usuario)
+        else:
+            Label(ventana, font="Helvetica 15", fg="#ffffff",
+                                background="red", text="Error, Datos incorrectos").place(x=80.0,
+                                                                                        y=60.0,
+                                                                                        width=300.0,
+                                                                                        height=43.0)
 
 
 def menu_añadir_saldo(usuario, recargar):  # usuario
-
-    clases.cliente.lista_compra.clear()
     ventana.geometry("450x300")
     ventana.configure(bg="#FFFFFF")
     ventana.title("Añadir Saldo")
@@ -506,20 +600,18 @@ def menu_añadir_saldo(usuario, recargar):  # usuario
         bd=0,
         highlightthickness=0,
         relief="ridge"
-    )
-    canvas.place(x=0, y=0)
+    ).place(x=0, y=0)
 
     button_image_1 = PhotoImage(
         file=relative_to_assets("boton_regresar.png"))
-    boton_cancelar = Button(
+    Button(
         image=button_image_1,
         borderwidth=0,
         highlightthickness=0,
         bg="#FFFFFF",
         command=lambda: menu_usuario_grafico(usuario),
         relief="flat"
-    )
-    boton_cancelar.place(
+    ).place(
         x=94.0,
         y=208.0,
         width=262.0,
@@ -529,7 +621,7 @@ def menu_añadir_saldo(usuario, recargar):  # usuario
     button_image_2 = PhotoImage(
         file=relative_to_assets("boton_continuar.png"))
 
-    boton_saldo = Button(
+    Button(
         image=button_image_2,
         borderwidth=0,
         highlightthickness=0,
@@ -537,8 +629,7 @@ def menu_añadir_saldo(usuario, recargar):  # usuario
         command=lambda: [clases.cliente.Cliente.ingreso(
             usuario, float(saldo.get())), menu_añadir_saldo(usuario, True)],
         relief="flat"
-    )
-    boton_saldo.place(
+    ).place(
         x=94.0,
         y=158.0,
         width=262.0,
@@ -546,8 +637,7 @@ def menu_añadir_saldo(usuario, recargar):  # usuario
     )
 
     saldo_texto = Label(ventana, font="Helvetica 15",
-                        text=f"Saldo: {clases.cliente.Cliente.saldo(usuario)} €", bg="#FFFFFF")
-    saldo_texto.place(x=94.0, y=50.0)
+                        text=f"Saldo: {clases.cliente.Cliente.saldo(usuario)} €", bg="#FFFFFF").place(x=94.0, y=50.0)
 
     saldo = Entry(ventana, font="Helvetica 20", background="#ccc6c6")
     saldo.place(x=94.0,
@@ -556,10 +646,9 @@ def menu_añadir_saldo(usuario, recargar):  # usuario
                 height=43.0)
 
     if (recargar):
-        texto_saldo_añadido = Label(ventana, font="Helvetica 20", fg="#ffffff",
-                                    background="#6aa84f", text=f"Se completo el proceso...")
-        texto_saldo_añadido.place(x=80.0,
-                                  y=10.0)
+        Label(ventana, font="Helvetica 20", fg="#ffffff",
+              background="#6aa84f", text=f"Se ha añadido el saldo...").place(x=78.0,
+                                                                             y=10.0)
 
     ventana.resizable(False, False)
     ventana.mainloop()
@@ -576,21 +665,19 @@ def menu_categoria(usuario, nombre_restaurante, categoria):
         bd=0,
         highlightthickness=0,
         relief="ridge"
-    )
+    ).place(x=0, y=0)
 
-    canvas.place(x=0, y=0)
-    button_image_1 = PhotoImage(
-        file=relative_to_assets("boton_añadir.png"))
-    button_1 = Button(
+    button_image_1 = PhotoImage(file=relative_to_assets("boton_añadir.png"))
+    cantidad_arreglar = 0
+    Button(
         image=button_image_1,
         borderwidth=0,
         highlightthickness=0,
         bg="#FFFFFF",
-        command=lambda: [clases.cliente.Cliente.pedido_añadir(nombre_restaurante, guardar_id, "postres", int(
-            cantidad.get())), menu_pedidos(nombre_restaurante, usuario)],
+        command=lambda: [clases.cliente.Cliente.pedido_añadir(nombre_restaurante, guardar_id, categoria, int(
+            cantidad_arreglar)), menu_pedidos(nombre_restaurante, usuario)],
         relief="flat"
-    )
-    button_1.place(
+    ).place(
         x=94.0,
         y=351.0,
         width=262.0,
@@ -607,29 +694,34 @@ def menu_categoria(usuario, nombre_restaurante, categoria):
             f"{menu['nombre']} - Precio: {menu['precio']} €")
         contador = contador+1
 
-    texto = Label(ventana, font="Helvetica 15", text="Producto", bg="#FFFFFF")
-    texto.place(x=94.0, y=125.0)
+    Label(ventana, font="Helvetica 15", text="Producto",
+          bg="#FFFFFF").place(x=94.0, y=125.0)
 
     combo = ttk.Combobox(
         state="readonly",
         values=dictionary_a_lista,
         font="Helvetica 20"
     )
+    combo.current(0)
     combo.place(x=94.0, y=170.0)
 
     guardar_id = 0
-    for name, values in lista.items():  # for name, age in dictionary.iteritems():  (for Python 2.x)
+    for name, values in lista.items():
         if values == combo.get():
             guardar_id = int(name)
 
-    texto_cantidad = Label(ventana, font="Helvetica 15",
-                           text="Cantidad", bg="#FFFFFF")
-    texto_cantidad.place(x=94.0,
-                         y=215.0)
+    Label(ventana, font="Helvetica 15",
+          text="Cantidad", bg="#FFFFFF").place(x=94.0,
+                                               y=215.0)
 
     cantidad = Entry(ventana, font="Helvetica 20",
                      background="#ccc6c6")
     cantidad.place(x=94.0, y=260.0)
+
+    if(not cantidad.get() or int(cantidad.get()) < 0):
+        cantidad_arreglar = 1
+    else:
+        cantidad_arreglar = cantidad.get()
 
     ventana.resizable(False, False)
     ventana.mainloop()

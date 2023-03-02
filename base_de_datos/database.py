@@ -1,4 +1,4 @@
-import clases.cliente, clases.restaurante, json, os, funciones.funciones
+import clases.cliente, clases.restaurante, json, os
 from os import path
 
 debug = False # activar el debug mode, para saber que esta haciendo

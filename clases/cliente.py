@@ -1,5 +1,5 @@
 from random import randint
-from clases import menu,restaurante
+from clases import menu, restaurante
 import base_de_datos.database
 from collections import defaultdict
 
@@ -39,8 +39,6 @@ class Cliente:
     def pedido_añadir(nombre_restaurante, pedido_nombre, categoria, cantidad):
         seleccion = restaurante.restaurantes_lista[nombre_restaurante][categoria][pedido_nombre]
 
-        #print (f"\n[+] Producto: {seleccion['nombre'] if cantidad < 1 else seleccion['nombre'] + f' x {cantidad}'} - Precio total: {seleccion['precio'] * cantidad} €")
-        
         lista_compra[len(lista_compra)] = { 
             "producto": f"{seleccion['nombre'] if cantidad < 1 else seleccion['nombre'] + f' x {cantidad}'}", 
             "precio": float(seleccion['precio'] * cantidad) 
