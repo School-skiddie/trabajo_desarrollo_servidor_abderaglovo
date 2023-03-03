@@ -191,6 +191,14 @@ def menu_principal_grafico_inicio_sesion():  # login
         relief="ridge"
     ).place(x=0, y=0)
 
+    abdera_icono = PhotoImage(
+        file=relative_to_assets("icono.png"))
+
+    Label(
+        ventana,
+        image=abdera_icono
+    ).place(x=75, y=30)
+
     button_image_1 = PhotoImage(
         file=relative_to_assets("boton_registro.png"))
 
@@ -244,7 +252,7 @@ def menu_principal_grafico_inicio_sesion():  # login
                      width=262.0,
                      height=43.0)
     valor_guardado = BooleanVar()
-    checkbox = Checkbutton(ventana, bg="#FFFFFF", text='Iniciar sesión, registro como gerente',
+    checkbox = Checkbutton(ventana, font=('Purple Smile', 10), bg="#FFFFFF", text='Iniciar sesión o registro como gerente',
                            variable=valor_guardado, onvalue=True, offvalue=False)
     checkbox.place(x=94.0,
                    y=305.0)
@@ -391,15 +399,13 @@ def menu_historial(usuario, tipo, restaurante):
         for mostrar in clases.cliente.historial_clientes[usuario]:
             lista.append(str(mostrar).replace("Producto", "\nProducto")+"\n")
     elif (tipo == "tramites"):
-        for mostrar in clases.cliente.historial_clientes[usuario]:
-            lista.append(str(clases.restaurante.pedidos_tramite).replace(
-                "[", "").replace("'", "").replace("]", ""))
+        for mostrar in clases.restaurante.pedidos_tramite:
+            lista.append(mostrar)
     elif (tipo == "carrito"):
         precio_total = 0
         for num_lista in clases.cliente.lista_compra.keys():
             carrito += str(f"[+] {clases.cliente.lista_compra[num_lista]['producto']} - Precio: {clases.cliente.lista_compra[num_lista]['precio']} €\n")
-            precio += precio_total + \
-                clases.cliente.lista_compra[num_lista]['precio']
+            precio += precio_total + clases.cliente.lista_compra[num_lista]['precio']
 
     button_image_2 = PhotoImage(
         file=relative_to_assets("boton_ver_historial.png"))
@@ -409,9 +415,7 @@ def menu_historial(usuario, tipo, restaurante):
     else:
         boton_dic = {}
         contador = 0
-
         if (len(lista) <= 0):
-            print(len(lista))
             Label(text="No se ha encontrado nada en el historial...").place(
                 relx=0.5, rely=0.5, anchor=tkinter.CENTER)
         else:
@@ -468,7 +472,7 @@ def menu_historial_por_item(usuario, lista, posicion, restaurante, tipo):
         height=43.0
     )
 
-    Label(text=lista[posicion]).place(
+    Label(text=lista[posicion], font=('Purple Smile', 8)).place(
         relx=0.5, rely=0.3, anchor=tkinter.CENTER)
 
     ventana.resizable(False, False)
@@ -548,6 +552,14 @@ def menu_pedidos(restaurante, usuario):
         highlightthickness=0,
         relief="ridge"
     ).place(x=0, y=0)
+
+    abdera_icono = PhotoImage(
+        file=relative_to_assets("icono.png"))
+
+    Label(
+        ventana,
+        image=abdera_icono
+    ).place(x=75, y=30)
 
     button_ver_carrito = PhotoImage(
         file=relative_to_assets("boton_carrito.png"))
@@ -785,8 +797,8 @@ def menu_categoria(usuario, nombre_restaurante, categoria):
             f"{menu['nombre']} - Precio: {menu['precio']} €")
         contador = contador+1
 
-    Label(ventana, font=('Purple Smile', 20), text="Producto",
-          bg="#FFFFFF").place(x=94.0, y=125.0)
+    Label(ventana, font=('Purple Smile', 18), text="Producto",
+          bg="#FFFFFF").place(x=94.0, y=120.0)
 
     combo = ttk.Combobox(
         state="readonly",
@@ -794,14 +806,14 @@ def menu_categoria(usuario, nombre_restaurante, categoria):
         font=('Purple Smile', 20)
     )
     combo.current(0)
-    combo.place(x=94.0, y=170.0)
+    combo.place(x=94.0, y=165.0)
 
     guardar_id = 0
     for name, values in lista.items():
         if values == combo.get():
             guardar_id = int(name)
 
-    Label(ventana, font=('Purple Smile', 20),
+    Label(ventana, font=('Purple Smile', 18),
           text="Cantidad", bg="#FFFFFF").place(x=94.0,
                                                y=215.0)
 
