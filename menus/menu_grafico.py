@@ -358,8 +358,8 @@ def menu_historial_regresar(usuario, restaurante):
         menu_pedidos(restaurante, usuario)
 
 
-def menu_historial(usuario, tipo, restaurante):
-    ventana.title("Historial")
+def menu_historial(usuario, tipo, restaurante, pagina):
+    ventana.title(f"Historial | Página: {pagina}")
     ventana.geometry("450x491")
 
     
@@ -391,6 +391,23 @@ def menu_historial(usuario, tipo, restaurante):
         height=43.0
     )
 
+    button_image_3 = PhotoImage(
+        file=relative_to_assets("boton_siguiente.png"))
+
+    Button(
+        image=button_image_3,
+        borderwidth=0,
+        highlightthickness=0,
+        bg="#FFFFFF",
+        command=lambda: [ print("siguiente") ],
+        relief="flat"
+    ).place(
+        x=94.0,
+        y=400.0,
+        width=262.0,
+        height=43.0
+    )
+
     carrito = ""
     lista = []
     precio = 0
@@ -416,7 +433,7 @@ def menu_historial(usuario, tipo, restaurante):
         boton_dic = {}
         contador = 0
         if (len(lista) <= 0):
-            Label(text="No se ha encontrado nada en el historial...").place(
+            Label(text="No se ha encontrado nada en el historial...", font=('Purple Smile', 10), fg="#ffffff").place(
                 relx=0.5, rely=0.5, anchor=tkinter.CENTER)
         else:
             for mostrar in lista:
@@ -471,6 +488,7 @@ def menu_historial_por_item(usuario, lista, posicion, restaurante, tipo):
         width=262.0,
         height=43.0
     )
+    
 
     Label(text=lista[posicion], font=('Purple Smile', 8)).place(
         relx=0.5, rely=0.3, anchor=tkinter.CENTER)
@@ -558,7 +576,8 @@ def menu_pedidos(restaurante, usuario):
 
     Label(
         ventana,
-        image=abdera_icono
+        image=abdera_icono,
+        fg="#ffffff"
     ).place(x=75, y=30)
 
     button_ver_carrito = PhotoImage(
