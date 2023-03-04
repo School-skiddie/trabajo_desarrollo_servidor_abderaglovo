@@ -24,6 +24,16 @@ ventana = Tk()
 
 class Registro_Inicio_Sesion():
     def iniciar_sesion(usuario, password, gerente):
+        Label(
+            ventana,
+            bg="#FFFFFF",
+            height=7,
+            width=58,
+            bd=0,
+            highlightthickness=0,
+            relief="ridge"
+        ).place(x=30, y=30)
+
         if (gerente):
             if (base_de_datos.database.Gerentes.comprobacion_gerente_sesion(usuario, password)):
 
@@ -855,6 +865,7 @@ class Menu_Usuario():
 
     def menu_categoria(usuario, nombre_restaurante, categoria):
         ventana.title("Categoria selección")
+        ventana.geometry("450x330")
 
         canvas = Canvas(
             ventana,
@@ -879,7 +890,7 @@ class Menu_Usuario():
             relief="flat"
         ).place(
             x=94.0,
-            y=351.0,
+            y=230.0,
             width=262.0,
             height=43.0
         )
@@ -896,7 +907,7 @@ class Menu_Usuario():
             contador = contador+1
 
         Label(ventana, font=('Purple Smile', 18), text="Producto",
-              bg="#FFFFFF").place(x=94.0, y=120.0)
+              bg="#FFFFFF").place(x=94.0, y=20.0)
 
         combo = ttk.Combobox(
             state="readonly",
@@ -904,7 +915,7 @@ class Menu_Usuario():
             font=('Purple Smile', 20)
         )
         combo.current(0)
-        combo.place(x=94.0, y=165.0)
+        combo.place(x=94.0, y=65.0)
 
         guardar_id = 0
         for name, values in lista.items():
@@ -913,11 +924,11 @@ class Menu_Usuario():
 
         Label(ventana, font=('Purple Smile', 18),
               text="Cantidad", bg="#FFFFFF").place(x=94.0,
-                                                   y=215.0)
+                                                   y=115.0)
 
         cantidad = Entry(ventana, font=('Purple Smile', 20),
                          background="#007FFF", fg="white")
-        cantidad.place(x=94.0, y=260.0)
+        cantidad.place(x=94.0, y=160.0)
 
         ventana.resizable(False, False)
         ventana.mainloop()
