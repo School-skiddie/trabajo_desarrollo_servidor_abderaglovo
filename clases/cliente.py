@@ -37,11 +37,18 @@ class Cliente:
 
     # Añadir pedido
     def pedido_añadir(nombre_restaurante, pedido_nombre, categoria, cantidad):
+        cantidad_arreglar = 0
+
+        if (int(cantidad) < 0):
+            cantidad_arreglar = 1
+        else:
+            cantidad_arreglar = cantidad
+
         seleccion = restaurante.restaurantes_lista[nombre_restaurante][categoria][pedido_nombre]
 
         lista_compra[len(lista_compra)] = { 
-            "producto": f"{seleccion['nombre'] if cantidad < 1 else seleccion['nombre'] + f' x {cantidad}'}", 
-            "precio": float(seleccion['precio'] * cantidad) 
+            "producto": f"{seleccion['nombre'] if cantidad_arreglar < 1 else seleccion['nombre'] + f' x {cantidad_arreglar}'}", 
+            "precio": float(seleccion['precio'] * cantidad_arreglar) 
         }
 
     # Obtener saldo

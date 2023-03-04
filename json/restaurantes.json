@@ -1,4 +1,49 @@
 {
+    "La Granja": {
+        "bebidas": [
+            {
+                "nombre": "agua",
+                "precio": 1.0
+            }
+        ],
+        "comidas": [
+            {
+                "nombre": "pollo",
+                "precio": 3.0
+            },
+            {
+                "nombre": "arroz a la cubana",
+                "precio": 5.0
+            }
+        ],
+        "password": "123",
+        "postres": [
+            {
+                "nombre": "tarta",
+                "precio": 2.5
+            }
+        ],
+        "reputacion": 0
+    },
+    "LaGranja": {
+        "bebidas": [
+            {
+                "agua": 2.0
+            }
+        ],
+        "comidas": [
+            {
+                "pollo": 3.0
+            }
+        ],
+        "password": "123",
+        "postres": [
+            {
+                "tarta": 1.0
+            }
+        ],
+        "reputacion": 0
+    },
     "Mohoso": {
         "bebidas": [
             {
@@ -20,20 +65,12 @@
         ],
         "comidas": [
             {
-                "nombre": "milanesa con fritas",
-                "precio": 3.5
-            },
-            {
                 "nombre": "estofado",
                 "precio": 1.5
             },
             {
                 "nombre": "ravioles",
                 "precio": 1.3
-            },
-            {
-                "nombre": "Pollo Asado",
-                "precio": 2.5
             }
         ],
         "password": "Perce2002",
@@ -54,19 +91,6 @@
                 "nombre": "lemon pie",
                 "precio": 8.0
             }
-        ],
-        "reputacion": 0
-    },
-    "Mohoso_dos": {
-        "bebidas": [
-            {}
-        ],
-        "comidas": [
-            {}
-        ],
-        "password": "Perceval2002",
-        "postres": [
-            {}
         ],
         "reputacion": 0
     }

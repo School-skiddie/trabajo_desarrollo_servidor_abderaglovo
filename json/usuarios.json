@@ -8,8 +8,14 @@
     "Alejandro": {
         "correo": "themachinehack@gmail.com",
         "password": "Perceval2002",
-        "saldo": 3823853.0,
+        "saldo": 3782760.7000000007,
         "telefono": 630909634
+    },
+    "Alejandro2002": {
+        "correo": "123@gmail.com",
+        "password": "123",
+        "saldo": 1001.0,
+        "telefono": "123"
     },
     "Sam": {
         "correo": "sam@gmail.com",

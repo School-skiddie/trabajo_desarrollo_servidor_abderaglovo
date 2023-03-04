@@ -9,6 +9,6 @@ base_de_datos.database.Gerentes.cargar_restaurantes()
 base_de_datos.database.Gerentes.cargar_historial_restaurantes()
 
 if(grafico):
-    menus.menu_grafico.menu_principal_grafico_inicio_sesion()
+    menus.menu_grafico.Registro_Inicio_Sesion.menu_principal_grafico_inicio_sesion()
 else:
     menus.menu.menu_principal() # cargamos el menu
