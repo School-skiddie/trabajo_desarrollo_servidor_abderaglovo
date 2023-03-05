@@ -71,6 +71,10 @@
             {
                 "nombre": "ravioles",
                 "precio": 1.3
+            },
+            {
+                "nombre": "Pollo con arroz",
+                "precio": 5.0
             }
         ],
         "password": "Perce2002",
